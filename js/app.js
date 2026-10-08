@@ -1079,13 +1079,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Clean spoken text for TTS and speech synthesis (removes bracketed Hindi hints)
+  function cleanSpokenSentence(text) {
+    if (!text) return "";
+    let clean = text;
+    // Strip parenthetical Hindi instructions like (yaha vo bataiye...) or (yahan...)
+    clean = clean.replace(/\([^)]*\)/g, '');
+    // Replace bracketed placeholders with natural examples or friendly defaults
+    clean = clean.replace(/\[(?:beverage|drink)\]/gi, 'hot tea');
+    clean = clean.replace(/\[(?:role\/study|role)\]/gi, 'a student');
+    clean = clean.replace(/\[(?:apna goal|goal)\]/gi, 'learning modern skills');
+    clean = clean.replace(/\[(?:morning habit|subah ki aadat|habit)\]/gi, 'a warm cup of tea');
+    clean = clean.replace(/\[(?:achhi baat batayein)\]/gi, 'I practiced speaking English');
+    clean = clean.replace(/\[(?:project\/skill|kya banaya|project)\]/gi, 'a web application');
+    clean = clean.replace(/\[(?:technology|tech)\]/gi, 'JavaScript');
+    clean = clean.replace(/\[(?:khubi batayein|apni khubi|quality|strength)\]/gi, 'quick learning and dedication');
+    clean = clean.replace(/\[(?:kya karte hain|action)\]/gi, 'prioritize critical tasks');
+    clean = clean.replace(/\[(?:hobby|hobbies)\]/gi, 'listening to good music');
+    clean = clean.replace(/\[(?:mood)\]/gi, 'energetic');
+    clean = clean.replace(/\[(?:kaisa raha)\]/gi, 'productive');
+    clean = clean.replace(/\[(?:teamwork ka tareeqa|approach)\]/gi, 'clear and open communication');
+    clean = clean.replace(/\[(?:kya improve karna hai|practice)\]/gi, 'speaking without hesitation');
+    clean = clean.replace(/\[(?:apne shahar ka naam|city)\]/gi, 'my hometown');
+    clean = clean.replace(/\[(?:khas baat|specialty)\]/gi, 'its rich culture and delicious food');
+    clean = clean.replace(/\[(?:apni pasand|choice)\]/gi, 'fast-growing startups');
+    clean = clean.replace(/\[(?:wajah|reason)\]/gi, 'I can learn rapidly');
+    clean = clean.replace(/\[(?:apna tareeqa batayein|method)\]/gi, 'breaking it into simple steps');
+    clean = clean.replace(/\[(?:apna reason batayein)\]/gi, 'it drives meaningful growth');
+    clean = clean.replace(/\[(?:apna vichaar batayein|opinion|view|vichaar)\]/gi, 'consistent practice');
+    clean = clean.replace(/\[(?:apna anubhav ya sahmat batayein|experience)\]/gi, 'definitely agree with that');
+    clean = clean.replace(/\[(?:name)\]/gi, 'Learner');
+    // Any remaining bracketed items
+    clean = clean.replace(/\[[^\]]+\]/g, 'this');
+    // Remove extra quotes, spaces, punctuation artifacts
+    clean = clean.replace(/^["'\s]+|["'\s]+$/g, '').replace(/\s{2,}/g, ' ').trim();
+    return clean;
+  }
+
   // Update Show Hint Content
   function updateRoomHints(aiMessage, lessonDay = null) {
     const guide = engine.generateHowToSpeakGuide(aiMessage, state.mode, lessonDay);
     state.currentHintGuide = guide;
 
     if (dom.rhAriaAskingText) {
-      dom.rhAriaAskingText.textContent = guide.whatAriaIsAsking || "आरिया के सवाल का सीधा जवाब नीचे दिया गया है:";
+      dom.rhAriaAskingText.textContent = guide.whatAriaIsAsking || "रीवा के सवाल का उत्तर देने के लिए वाक्य ढांचा:";
     }
     if (dom.rhTargetSentence) {
       dom.rhTargetSentence.textContent = `"${guide.targetText}"`;
@@ -1098,11 +1135,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (dom.rhListenBtn) {
-      dom.rhListenBtn.onclick = () => speech.speak(guide.targetText);
+      dom.rhListenBtn.onclick = () => {
+        const spoken = cleanSpokenSentence(guide.targetText);
+        speech.speak(spoken);
+      };
     }
     if (dom.rhSpeakNowBtn) {
       dom.rhSpeakNowBtn.onclick = () => {
-        handleUserTurn(guide.targetText);
+        if (guide.targetText.includes('(yaha') || guide.targetText.includes('(apna') || guide.targetText.includes('[')) {
+          if (dom.roomInput) {
+            dom.roomInput.value = guide.targetText;
+            dom.roomInput.focus();
+            const start = guide.targetText.indexOf('[');
+            const end = guide.targetText.indexOf(']');
+            if (start !== -1 && end !== -1) {
+              dom.roomInput.setSelectionRange(start, end + 1);
+            }
+          }
+        } else {
+          handleUserTurn(guide.targetText);
+        }
       };
     }
 
@@ -1115,9 +1167,22 @@ document.addEventListener('DOMContentLoaded', () => {
         chip.type = 'button';
         chip.className = 'pih-chip';
         chip.innerHTML = `<span>💬</span> <span>${escapeHtml(pillText)}</span>`;
-        chip.title = "Tap to speak this response (यह बोलने या भेजने के लिए टैप करें)";
+        chip.title = "Tap to speak or pre-fill this sentence structure";
         chip.onclick = () => {
-          handleUserTurn(pillText);
+          if (pillText.includes('(yaha') || pillText.includes('(apna') || pillText.includes('[')) {
+            if (dom.roomInput) {
+              const cleanPill = pillText.replace(/^"|"$/g, '');
+              dom.roomInput.value = cleanPill;
+              dom.roomInput.focus();
+              const start = cleanPill.indexOf('[');
+              const end = cleanPill.indexOf(']');
+              if (start !== -1 && end !== -1) {
+                dom.roomInput.setSelectionRange(start, end + 1);
+              }
+            }
+          } else {
+            handleUserTurn(pillText);
+          }
         };
         dom.pihChipsScroll.appendChild(chip);
       });

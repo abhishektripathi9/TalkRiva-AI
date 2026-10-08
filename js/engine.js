@@ -1212,89 +1212,89 @@ class ConversationEngine {
       {
         id: 'starter-profile-placement-intro',
         emotion: '💡 Placement Coach',
-        text: `Hello ${name}! Welcome to our practice session. As an ambitious ${profLabel} preparing for future career opportunities, one of the most essential questions recruiters ask is: 'Could you tell me a little about yourself?' How would you introduce your educational background, core strengths, and career ambitions in two or three confident English sentences?`,
-        hindi: `नमस्ते ${name}! हमारे अभ्यास सत्र में आपका स्वागत है। एक महत्वाकांक्षी ${profLabel} के रूप में, इंटरव्यूअर्स का सबसे महत्वपूर्ण सवाल होता है: 'Tell me about yourself'। आप अपनी शिक्षा, मुख्य ताकत और करियर के लक्ष्यों का परिचय 2-3 आत्मविश्वास से भरे वाक्यों में कैसे देंगे?`,
-        whatAsked: `आरिया पूछ रही है: 'अपने बैकग्राउंड, मुख्य खूबियों और करियर लक्ष्यों का परिचय 2-3 सरल वाक्यों में दें!'`,
-        targetText: `Hello! My name is ${name}. I am a dedicated ${profLabel}, and I am actively working on improving my communication skills and career readiness.`,
-        phonetic: `Huh-LOH! My naym iz ${name}. Eye am uh DED-ih-kay-tid ${profLabel}, and eye am AK-tiv-lee WUR-king on im-PROO-ving my kuh-myoo-nih-KAY-shun skilz and kuh-REER RED-ee-nis.`,
-        hindiMeaning: `नमस्ते! मेरा नाम ${name} है। मैं एक समर्पित ${profLabel} हूँ, और मैं अपने संचार कौशल और करियर की तैयारी को बेहतर बनाने पर सक्रिय रूप से काम कर रहा हूँ।`
+        text: `Hey there! Great to connect with you. If an interviewer casually asks: 'Could you tell me a little about yourself?', how would you introduce your background, strengths, and what you're working on in two simple sentences?`,
+        hindi: `नमस्ते! आपसे जुड़कर बहुत अच्छा लगा। अगर कोई इंटरव्यूअर पूछे: 'Tell me about yourself', तो आप अपना परिचय और अपनी खूबियां 2 सरल वाक्यों में कैसे देंगे?`,
+        whatAsked: `रीवा पूछ रही है: 'अपने बैकग्राउंड और खूबियों का परिचय 2 सरल वाक्यों में दें!'`,
+        targetText: `I am [role/study] (yahan apna role ya study batayein, jaise a student ya developer) and currently I am focusing on [apna goal] (jaise learning new skills).`,
+        phonetic: `Eye am [your role] and KUR-unt-lee eye am FOH-kus-ing on [your goal].`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'I am [रोल] and currently focusing on [लक्ष्य]। (जैसे: I am a student and focusing on my skills).'`
       },
       // 2. Positive Morning Mindset & Routine
       {
         id: 'starter-profile-morning-mindset',
         emotion: '🌸 Warm & Inspiring',
-        text: `Good day, ${name}! It is wonderful to have you here today. Successful communicators often emphasize how our morning mindset shapes the rest of our day. What is one positive habit or routine that helps you start your day on a focused and productive note?`,
-        hindi: `शुभ दिन, ${name}! आज आपका यहाँ होना बहुत सुखद है। सफल लोग अक्सर कहते हैं कि सुबह की दिनचर्या पूरे दिन को तय करती है। ऐसी कौन सी अच्छी आदत है जो आपके दिन की शुरुआत को सकारात्मक बनाती है?`,
-        whatAsked: `आरिया पूछ रही है: 'अपने दिन की शुरुआत को सकारात्मक बनाने वाली किसी आदत या रूटीन के बारे में बताएं!'`,
-        targetText: `I like starting my morning with a calm mind, planning my daily goals, and dedicating time to learn something new.`,
-        phonetic: `Eye lyk STAHR-ting my MOR-ning with uh kahm mynd, PLAN-ing my DAY-lee gohlz, and DED-ih-kay-ting tyme too lurn SUM-thing noo.`,
-        hindiMeaning: `मुझे शांत मन से सुबह शुरू करना, अपने दिन के लक्ष्यों की योजना बनाना और कुछ नया सीखने के लिए समय निकालना पसंद है।`
+        text: `Good morning! Hope your day is off to a peaceful and productive start. What's one morning habit or routine that helps you refresh your mind and get ready for the day?`,
+        hindi: `सुप्रभात! उम्मीद है आपके दिन की शुरुआत अच्छी रही होगी। ऐसी कौन सी आदत है जो सुबह आपके मन को तरोताजा रखती है?`,
+        whatAsked: `रीवा पूछ रही है: 'सुबह मन को तरोताजा रखने वाली किसी आदत या रूटीन के बारे में बताएं!'`,
+        targetText: `Every morning, I usually [morning habit] (yahan apni subah ki aadat batayein, jaise drink a hot cup of tea ya go for a walk) to feel fresh.`,
+        phonetic: `EV-ree MOR-ning, eye YOO-zhoo-uh-lee [your habit] too feel fresh.`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'Every morning, I usually [आदत] to feel fresh.' (जैसे: I usually drink hot tea to feel fresh).`
       },
       // 3. Overcoming Hesitation & Encouraging Confidence
       {
         id: 'starter-profile-confidence-building',
         emotion: '🤗 Supportive & Caring',
-        text: `Hello ${name}! Please remember that everyone begins their language journey with hesitation before achieving natural fluency. What truly matters is speaking with genuine enthusiasm. What is one personal milestone or achievement you felt proud of recently?`,
-        hindi: `नमस्ते ${name}! याद रखें कि हर व्यक्ति शुरुआत में झिझक के बाद ही धाराप्रवाह बोलना सीखता है। सबसे महत्वपूर्ण बात उत्साह के साथ बोलना है। हाल ही में ऐसी कौन सी बात रही जिस पर आपको गर्व महसूस हुआ?`,
-        whatAsked: `आरिया कह रही है: 'बिना किसी झिझक के दिल खोलकर बताएं कि हाल ही में आपको किस बात पर गर्व या खुशी महसूस हुई!'`,
-        targetText: `Recently, I felt proud because I made a firm commitment to practice speaking English every single day.`,
-        phonetic: `REE-sunt-lee, eye felt prowd bee-KUZ eye mayd uh furm kuh-MIT-munt too PRAK-tis SPEE-king ING-glish EV-ree SING-gul day.`,
-        hindiMeaning: `हाल ही में मुझे गर्व महसूस हुआ क्योंकि मैंने हर रोज़ अंग्रेजी बोलने का अभ्यास करने का पक्का संकल्प लिया है।`
+        text: `Hey there! Remember, we're just two friends practicing together without any pressure or judgment. What is one thing you did recently that made you feel really happy or proud?`,
+        hindi: `नमस्ते! याद रखें, हम दोस्तों की तरह बात कर रहे हैं बिना किसी झिझक के। हाल ही में ऐसी कौन सी बात रही जिस पर आपको खुशी या गर्व महसूस हुआ?`,
+        whatAsked: `रीवा पूछ रही है: 'हाल ही में किस बात पर आपको खुशी या गर्व महसूस हुआ?'`,
+        targetText: `Recently, I felt proud because [achhi baat batayein] (yahan bataiye, jaise I practiced English daily ya completed my tasks).`,
+        phonetic: `REE-sunt-lee, eye felt prowd bee-KUZ [your reason].`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'Recently, I felt proud because [वजह]। (जैसे: Recently, I felt proud because I practiced daily).'`
       },
       // 4. College Project & Technical Strength
       {
         id: 'starter-profile-project-skills',
         emotion: '🤩 Impressed & Curious',
-        text: `Hi ${name}! In professional discussions and interviews, explaining your projects with clarity makes an extraordinary first impression. What is an interesting project, skill, or subject you are passionate about exploring right now?`,
-        hindi: `हाय ${name}! इंटरव्यू में अपने प्रोजेक्ट्स को स्पष्टता से समझाना एक बेहतरीन प्रभाव छोड़ता है। वह कौन सा प्रोजेक्ट, हुनर या विषय है जिसमें आपकी सबसे गहरी रुचि है?`,
-        whatAsked: `आरिया पूछ रही है: 'अपने प्रोजेक्ट या किसी पसंदीदा विषय के बारे में 2-3 वाक्यों में बताएं!'`,
-        targetText: `I am currently developing my practical skills and working on projects that solve real-world problems.`,
-        phonetic: `Eye am KUR-unt-lee dih-VEL-up-ing my PRAK-tih-kul skilz and WUR-king on PRAH-jekts that sahlv reel-wurld PRAHB-lumz.`,
-        hindiMeaning: `मैं वर्तमान में अपने व्यावहारिक हुनर को निखार रहा हूँ और ऐसे प्रोजेक्ट्स पर काम कर रहा हूँ जो वास्तविक समस्याओं को हल करते हैं।`
+        text: `Hey! Explaining projects and skills clearly makes such an awesome impression. What is an interesting project, skill, or subject you are exploring right now?`,
+        hindi: `नमस्ते! अपने प्रोजेक्ट्स या स्किल्स को साफ-साफ समझाना बहुत बढ़िया लगता है। अभी आप किस प्रोजेक्ट, स्किल या विषय पर काम कर रहे हैं?`,
+        whatAsked: `रीवा पूछ रही है: 'अपने प्रोजेक्ट या किसी पसंदीदा स्किल के बारे में 2-3 वाक्यों में बताएं!'`,
+        targetText: `Currently, I am working on [project/skill] (yahan apna project ya skill batayein, jaise a web application ya learning coding).`,
+        phonetic: `KUR-unt-lee, eye am WUR-king on [your project].`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'Currently, I am working on [प्रोजेक्ट/स्किल]। (जैसे: Currently, I am working on a web project).'`
       },
       // 5. Daily Real-Life Pause & Recharge
       {
         id: 'starter-profile-daily-chai',
         emotion: '✨ Energized & Cheerful',
-        text: `Good day, ${name}! I hope your day is going wonderfully! During a busy routine of studying and working, how do you prefer to take a short pause to refresh your mind—perhaps with a hot cup of tea or a relaxing walk?`,
-        hindi: `शुभ दिन, ${name}! आशा है आपका दिन बहुत अच्छा बीत रहा है! काम या पढ़ाई के बीच अपना मन तरोताजा करने के लिए आप क्या करना पसंद करते हैं?`,
-        whatAsked: `आरिया पूछ रही है: 'थकान मिटाने और रिफ्रेश होने के लिए आप क्या करना पसंद करते हैं?'`,
-        targetText: `I truly enjoy taking a brief afternoon pause with a hot cup of tea to refresh my thoughts and regain my focus.`,
-        phonetic: `Eye TROO-lee en-JOY TAY-king uh breef af-ter-NOON pawz with uh hot kup uv tee too ree-FRESH my thawtz and ree-GAYN my FOH-kus.`,
-        hindiMeaning: `मुझे अपने विचारों को तरोताजा करने और दोबारा ध्यान केंद्रित करने के लिए गर्म चाय के साथ एक छोटा सा ब्रेक लेना बहुत पसंद है।`
+        text: `Hey, how's your day going so far? During a busy day of studying or working, how do you prefer to take a quick pause to recharge—maybe with a warm cup of tea or a short walk?`,
+        hindi: `नमस्ते! आज का दिन कैसा चल रहा है? काम या पढ़ाई के बीच थोड़ा तरोताजा होने के लिए आप क्या करना पसंद करते हैं—शायद चाय या छोटा सा ब्रेक?`,
+        whatAsked: `रीवा पूछ रही है: 'थकान मिटाने और रिफ्रेश होने के लिए आप क्या पसंद करते हैं?'`,
+        targetText: `I like to drink [beverage] (yaha vo bataiye jo aap peena pasand karte hai, jaise hot tea ya coffee) to refresh my mind.`,
+        phonetic: `Eye lyk too drink [your drink] too ree-FRESH my mynd.`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'I like to drink [ड्रिंक] to refresh my mind.' (जैसे: I like to drink hot tea to refresh my mind).`
       },
       // 6. Professional Situational: Unique Strengths
       {
         id: 'starter-profile-hire-strength',
         emotion: '💡 Interview Coach',
-        text: `Hello ${name}! Imagine an interviewer looks at your resume and warmly asks: 'What makes you unique, and why should we welcome you to our team?' How would you articulate your dedication, adaptability, and positive attitude?`,
-        hindi: `नमस्ते ${name}! कल्पना कीजिए इंटरव्यूअर पूछे: 'आपकी सबसे बड़ी खूबी क्या है, और हम आपको अपनी टीम में क्यों चुनें?' तो आप अपनी लगन और सकारात्मक सोच को कैसे व्यक्त करेंगे?`,
-        whatAsked: `आरिया पूछ रही है: 'इंटरव्यू में अपनी मेहनत, सीखने की ललक और समर्पण को अंग्रेजी में कैसे बताएंगे?'`,
-        targetText: `You should consider me because I am highly adaptable, consistent in my efforts, and eager to learn and contribute value every single day.`,
-        phonetic: `Yoo shood kun-SID-er mee bee-KUZ eye am HY-lee uh-DAP-tuh-bul, kun-SIS-tunt in my EF-urts, and EE-ger too lurn and kun-TRIB-yoot VAL-yoo EV-ree SING-gul day.`,
-        hindiMeaning: `आपको मुझे चुनना चाहिए क्योंकि मैं बहुत लचीला हूँ, अपने प्रयासों में निरंतर हूँ और हर दिन सीखने व योगदान देने के लिए उत्सुक हूँ।`
+        text: `Imagine an interviewer looks at your resume and warmly asks: 'What makes you unique, and why should we hire you?' How would you describe your dedication and attitude in simple words?`,
+        hindi: `कल्पना कीजिए इंटरव्यूअर पूछे: 'आपकी सबसे बड़ी खूबी क्या है, और हम आपको क्यों चुनें?' तो आप अपनी लगन और सोच को कैसे व्यक्त करेंगे?`,
+        whatAsked: `रीवा पूछ रही है: 'इंटरव्यू में अपनी मेहनत और सीखने की लगन को कैसे बताएंगे?'`,
+        targetText: `You should hire me because I am [khubi batayein] (yahan apni khubi bataiye, jaise adaptable and quick learner) and always eager to grow.`,
+        phonetic: `Yoo shood HYRE mee bee-KUZ eye am [your quality] and AWL-wayz EE-ger too groh.`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'You should hire me because I am [खूबी] and eager to grow.'`
       },
       // 7. Free Time Passions & Hobbies
       {
         id: 'starter-profile-hobbies',
         emotion: '🌸 Warm & Relatable',
-        text: `It is an absolute pleasure to speak with you, ${name}! In genuine conversations, sharing our favorite pastimes creates an immediate, friendly connection. What hobbies, sports, or music bring you the greatest joy in your spare time?`,
-        hindi: `आपसे बात करके बहुत खुशी हुई, ${name}! स्वाभाविक बातचीत में अपने शौक साझा करना एक दोस्ताना रिश्ता बनाता है। खाली समय में कौन सा शौक, खेल या संगीत आपको सबसे ज्यादा खुशी देता है?`,
-        whatAsked: `आरिया पूछ रही है: 'अपने पसंदीदा शौक, खेल या संगीत के बारे में बताइए!'`,
-        targetText: `In my spare time, I genuinely enjoy reading insightful books, listening to music, and exploring new ideas.`,
-        phonetic: `In my spair tyme, eye JEN-yoo-in-lee en-JOY REE-ding IN-syt-ful books, LIS-ning too MYOO-zik, and ek-SPLOR-ing noo eye-DEE-uz.`,
-        hindiMeaning: `खाली समय में, मुझे ज्ञानवर्धक किताबें पढ़ना, संगीत सुनना और नए विचारों की खोज करना बहुत अच्छा लगता है।`
+        text: `It's so nice chatting with you! In casual conversations, sharing hobbies is the best icebreaker. What hobbies, sports, or music bring you the most joy in your free time?`,
+        hindi: `आपसे बात करके बहुत अच्छा लग रहा है! खाली समय में कौन सा शौक, खेल या संगीत आपको सबसे ज्यादा खुशी देता है?`,
+        whatAsked: `रीवा पूछ रही है: 'अपने पसंदीदा शौक, खेल या संगीत के बारे में बताइए!'`,
+        targetText: `In my free time, I really enjoy [hobby] (yahan apni hobby bataiye, jaise listening to music, playing cricket ya watching movies).`,
+        phonetic: `In my free tyme, eye REE-uh-lee en-JOY [your hobby].`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'In my free time, I really enjoy [हॉबी]। (जैसे: In my free time, I really enjoy listening to music).'`
       },
       // 8. Overcoming Hesitation & Speaking Confidently
       {
         id: 'starter-profile-hesitation',
         emotion: '✨ Inspiring & Motivating',
-        text: `Welcome ${name}! Here is an empowering communication secret: whenever you search for the right word, take a serene, deliberate pause instead of rushing. How confident are you feeling about expressing yourself in English today?`,
-        hindi: `स्वागत है ${name}! याद रखें: जब भी शब्द न मिलें, तो घबराने की जगह 1 सेकंड का शांत ठहराव लें। आज आप अपने विचार व्यक्त करने में कितना आत्मविश्वासी महसूस कर रहे हैं?`,
-        whatAsked: `आरिया पूछ रही है: 'शांत मन से बताएं कि आज आप अंग्रेजी बोलने में कितना आत्मविश्वासी महसूस कर रहे हैं!'`,
-        targetText: `I am feeling very optimistic, and I am ready to practice speaking with clear expression and confidence.`,
-        phonetic: `Eye am FEEL-ing VER-ee ahp-tuh-MIS-tik, and eye am RED-ee too PRAK-tis SPEE-king with kleer ek-SPRESH-un and KAHN-fih-dense.`,
-        hindiMeaning: `मैं बहुत सकारात्मक महसूस कर रहा हूँ, और स्पष्ट अभिव्यक्ति और आत्मविश्वास के साथ बोलने का अभ्यास करने के लिए पूरी तरह तैयार हूँ।`
+        text: `Hey there! Remember: whenever you search for the right word, take a calm 1-second pause instead of rushing. How confident are you feeling about speaking today?`,
+        hindi: `नमस्ते! याद रखें: जब भी शब्द न मिलें, तो घबराने की जगह 1 सेकंड का शांत ठहराव लें। आज आप बोलने में कैसा महसूस कर रहे हैं?`,
+        whatAsked: `रीवा पूछ रही है: 'शांत मन से बताएं कि आज आप बोलने में कितना आत्मविश्वासी महसूस कर रहे हैं!'`,
+        targetText: `I am feeling [mood] (yahan apna mood batayein, jaise confident, ready, ya a bit nervous) and eager to practice speaking.`,
+        phonetic: `Eye am FEEL-ing [your mood] and EE-ger too PRAK-tis SPEE-king.`,
+        hindiMeaning: `👉 वाक्य ढांचा: 'I am feeling [मूड] and eager to practice.' (जैसे: I am feeling confident and eager to practice).`
       }
     ];
 
@@ -1344,67 +1344,65 @@ class ConversationEngine {
    */
   generateHowToSpeakGuide(aiResponse, mode, lessonDay = null) {
     const cleanAi = (aiResponse || "").toLowerCase();
-    const userMemory = this.memory.data;
-    const userName = userMemory.profile.name || "friend";
 
     // CASE 1: Structured Lesson Practice Mode
     if (lessonDay) {
       const lesson = this.lessonsCurriculum.find(l => l.day === parseInt(lessonDay, 10));
       if (lesson && lesson.practiceChallenge) {
-        let whatAsked = `आरिया अभ्यास करवा रही है: ${lesson.titleHindi}`;
+        let whatAsked = `रीवा अभ्यास करवा रही है: ${lesson.titleHindi}`;
         let lessonPills = [
           lesson.practiceChallenge.targetSentence,
           "I am focusing on speaking smoothly and with confidence.",
           "Could we practice one more example together?"
         ];
         if (parseInt(lessonDay, 10) === 1) {
-          whatAsked = "आरिया पूछ रही है: 'Myself' के बिना अपना नाम और आज का मूड बताएं!";
+          whatAsked = "रीवा पूछ रही है: 'Myself' के बिना अपना नाम और आज का मूड बताएं!";
           lessonPills = [
-            `Hello Aria, my name is ${userName}. I am feeling energetic today!`,
-            `Hi! I am ${userName}, excited to build strong English communication skills.`,
-            `Good morning! I am feeling ready to dive into today's session.`
+            "I am feeling energetic and ready to speak English today!",
+            "I am excited to build strong conversational skills with you.",
+            "My name is [name] (yahan apna naam batayein, jaise Rahul ya Priya)"
           ];
         } else if (parseInt(lessonDay, 10) === 2) {
-          whatAsked = "आरिया पूछ रही है: आज दिन में आपने क्या किया और शाम को क्या करना पसंद करते हैं?";
+          whatAsked = "रीवा पूछ रही है: आज दिन में आपने क्या किया और शाम को क्या करना पसंद करते हैं?";
           lessonPills = [
             "Earlier today, I finished my tasks and practiced spoken English.",
             "In the evening, I usually unwind and review what I learned.",
-            "I spent my afternoon working productively on key priorities."
+            "Earlier today, I [action] (yahan batayein kya kiya, jaise worked productively)"
           ];
         } else if (parseInt(lessonDay, 10) === 3) {
-          whatAsked = "आरिया पूछ रही है: बिना 'Um' या 'Uh' बोले, शांत रहकर बताएं कि आपका सबसे बड़ा लक्ष्य क्या है?";
+          whatAsked = "रीवा पूछ रही है: बिना 'Um' या 'Uh' बोले, शांत रहकर बताएं कि आपका सबसे बड़ा लक्ष्य क्या है?";
           lessonPills = [
             "My primary milestone is to speak English fluently and crack top interviews.",
             "I aim to express my thoughts clearly without any hesitation.",
-            "My biggest goal this year is mastering professional communication."
+            "My biggest goal is [goal] (yahan apna lakshya batayein)"
           ];
         } else if (parseInt(lessonDay, 10) === 4) {
-          whatAsked = "आरिया पूछ रही है (Ping-Pong): आपका वीकेंड कैसा रहा? (जवाब देकर वापस सवाल पूछें)";
+          whatAsked = "रीवा पूछ रही है (Ping-Pong): आपका वीकेंड कैसा रहा? (जवाब देकर वापस सवाल पूछें)";
           lessonPills = [
             "My weekend was very refreshing! How did you spend your time?",
-            "I relaxed and read an insightful book. What about you, Aria?",
-            "I went outdoors to recharge. What do you enjoy doing on weekends?"
+            "I relaxed and read an insightful book. What about you?",
+            "My weekend was [kaisa raha] (yahan apna weekend batayein)"
           ];
         } else if (parseInt(lessonDay, 10) === 5) {
-          whatAsked = "आरिया पूछ रही है: 14 घंटे काम करने की बात पर आप विनम्रता से (Diplomatically) असहमति कैसे जताएंगे?";
+          whatAsked = "रीवा पूछ रही है: 14 घंटे काम करने की बात पर आप विनम्रता से (Diplomatically) असहमति कैसे जताएंगे?";
           lessonPills = [
             "I understand that perspective, but sustainable pacing drives superior long-term results.",
             "I respectfully see it differently, as balance prevents burnout.",
             "While hard work is vital, focused smart work yields better quality."
           ];
         } else if (parseInt(lessonDay, 10) === 6) {
-          whatAsked = "आरिया पूछ रही है: सीनियर मैनेजर के सामने 45 सेकंड में अपना रोल और अनुभव बताएं!";
+          whatAsked = "रीवा पूछ रही है: सीनियर मैनेजर के सामने 45 सेकंड में अपना रोल और अनुभव बताएं!";
           lessonPills = [
             "I am a software engineer dedicated to building scalable, user-centric systems.",
             "I specialize in full-stack architecture with a focus on high efficiency.",
-            "My background blends solid technical depth with collaborative problem-solving."
+            "I specialize in [field] (yahan apna field batayein, jaise software development)"
           ];
         } else if (parseInt(lessonDay, 10) === 7) {
-          whatAsked = "आरिया पूछ रही है (STAR Method): कोई कठिन चुनौती, आपका उठाया कदम और परिणाम बताएं!";
+          whatAsked = "रीवा पूछ रही है (STAR Method): कोई कठिन चुनौती, आपका उठाया कदम और परिणाम बताएं!";
           lessonPills = [
             "When facing a critical system bug, I analyzed logs, deployed a hotfix, and saved the release.",
             "Under tight deadlines, I streamlined tasks and delivered the milestone on time.",
-            "I resolved a team disagreement by organizing an open, data-driven discussion."
+            "When facing [challenge] (yahan challenge batayein), I analyzed and solved it."
           ];
         }
 
@@ -1425,14 +1423,14 @@ class ConversationEngine {
       if (cleanAi.includes(starterKey) || cleanAi.includes(this.currentActiveStarter.id)) {
         return {
           whatAriaIsAsking: this.currentActiveStarter.whatAsked,
-          formula: "Dynamic Starter + Vocabulary",
+          formula: "Dynamic Starter + Sentence Structure",
           targetText: this.currentActiveStarter.targetText,
           phonetic: this.currentActiveStarter.phonetic,
-          hindi: `हिंदी अर्थ: ${this.currentActiveStarter.hindiMeaning}`,
+          hindi: this.currentActiveStarter.hindiMeaning,
           quickPills: [
-            this.currentActiveStarter.targetText,
-            `Hello Aria, I am feeling fantastic and eager to communicate in English today!`,
-            `I am ready to speak with confidence and learn modern vocabulary!`
+            "I am feeling fantastic and eager to chat in English today!",
+            "I like to drink hot tea because it keeps me refreshed.",
+            this.currentActiveStarter.targetText
           ]
         };
       }
@@ -1442,14 +1440,14 @@ class ConversationEngine {
     if (cleanAi.includes("real-life buddy") || cleanAi.includes("hanging out") || cleanAi.includes("over chai") || cleanAi.includes("robotic bot talk")) {
       return {
         whatAriaIsAsking: "रीवा कह रही है कि अब से हम दोस्तों की तरह बात करेंगे—पूछ रही है कि आज का दिन कैसा रहा!",
-        formula: "Casual greeting + Daily summary + Relaxed tone",
-        targetText: "My day was pretty busy, but I'm finally relaxing now! How's your day going?",
-        phonetic: "My day wuz PRIT-ee BIZ-ee, but eye'm FY-nuh-lee ree-LAKS-ing now! How'z yoor day GOH-ing?",
-        hindi: "आज का दिन काफी व्यस्त रहा, पर अब मैं आराम कर रहा हूँ! आपका दिन कैसा चल रहा है?",
+        formula: "Daily summary + Relaxed tone + Casual question back",
+        targetText: "My day was [kaisa raha] (yaha vo bataiye ki din kaisa raha, jaise pretty busy, great ya relaxing), but now I am taking a break! How's your day going?",
+        phonetic: "My day wuz [your day], but now eye am TAY-king uh brayk! How'z yoor day GOH-ing?",
+        hindi: "👉 वाक्य ढांचा: 'My day was [दिन कैसा रहा], but now I am taking a break! How's your day going?' (जैसे: 'My day was pretty busy, but now I am taking a break!')",
         quickPills: [
-          "My day was pretty busy, but I'm relaxing now!",
-          "Honestly, today was quite fun and productive!",
-          "I just had a nice cup of hot tea!"
+          "My day was pretty busy, but I'm relaxing now! How's your day going?",
+          "Honestly, today was quite fun and productive! What about yours?",
+          "My day was [kaisa raha] (yaha apna din batayein)"
         ]
       };
     }
@@ -1457,15 +1455,15 @@ class ConversationEngine {
     // 1. Projects, Coding, Software, Bug, Architecture
     if (cleanAi.includes("project") || cleanAi.includes("bug") || cleanAi.includes("code") || cleanAi.includes("software") || cleanAi.includes("technical") || cleanAi.includes("framework") || cleanAi.includes("programming") || cleanAi.includes("architecture")) {
       return {
-        whatAriaIsAsking: "आरिया आपके प्रोजेक्ट, कोडिंग अनुभव या किसी कठिन टेक्निकल समस्या के बारे में पूछ रही है।",
-        formula: "Context (Recent project) + Challenge + Action taken + Positive outcome",
-        targetText: "In my recent project, I built a scalable web application and optimized API queries for seamless user experience.",
-        phonetic: "In my REE-sent PROJ-ekt, eye bilt uh SKAY-luh-bul web ap-lih-KAY-shun and AHP-tih-myzd AY-pee-eye KWEE-reez fur SEEM-lis YOO-zur ek-SPEER-ee-ens.",
-        hindi: "मेरे हालिया प्रोजेक्ट में मैंने एक स्केलेबल वेब ऐप्लिकेशन बनाई और बेहतरीन यूज़र एक्सपीरियंस के लिए एपीआई क्वेरीज़ ऑप्टिमाइज़ कीं।",
+        whatAriaIsAsking: "रीवा आपके प्रोजेक्ट, कोडिंग अनुभव या किसी टेक्निकल काम के बारे में पूछ रही है।",
+        formula: "Context (Recent project) + What you built + Technology used",
+        targetText: "In my recent project, I built [kya banaya] (yaha vo bataiye jo aapne banaya, jaise a web application ya dashboard) using [technology] (jaise React ya JavaScript) to improve performance.",
+        phonetic: "In my REE-sent PROJ-ekt, eye bilt [your project] YOO-zing [your tech] too im-PROOV per-FOR-muns.",
+        hindi: "👉 वाक्य ढांचा: 'In my recent project, I built [प्रोजेक्ट] using [टेक्नोलॉजी]...' (जैसे: 'In my recent project, I built a web application using JavaScript.')",
         quickPills: [
           "I recently built a modern web application with full responsiveness.",
           "I debugged a complex state synchronization issue using console profiling.",
-          "Could you suggest the best architectural approach for scalable apps?"
+          "In my recent project, I built [project] (yaha apna project batayein)"
         ]
       };
     }
@@ -1473,15 +1471,15 @@ class ConversationEngine {
     // 2. Deadlines, Pressure, Stress, Complex Challenges
     if (cleanAi.includes("deadline") || cleanAi.includes("pressure") || cleanAi.includes("challenge") || cleanAi.includes("difficult") || cleanAi.includes("obstacle") || cleanAi.includes("tough situation")) {
       return {
-        whatAriaIsAsking: "आरिया पूछ रही है: 'कठिन डेडलाइन, दबाव या बड़ी चुनौती के समय आप काम कैसे संभालते हैं?'",
-        formula: "Calm Mindset + Prioritization + Structured Execution + Timely Delivery",
-        targetText: "When faced with tight deadlines, I prioritize critical deliverables and keep communication proactive and transparent.",
-        phonetic: "Wen fayst with tyte DED-lynez, eye pry-OR-ih-tyze KRIT-ih-kul dih-LIV-er-uh-bulz and keep kuh-myoo-nih-KAY-shun proh-AK-tiv and trans-PAIR-unt.",
-        hindi: "कठिन डेडलाइन पर मैं जरूरी कामों को प्राथमिकता देता हूँ और टीम के साथ सक्रिय व पारदर्शी संवाद बनाए रखता हूँ।",
+        whatAriaIsAsking: "रीवा पूछ रही है: 'कठिन डेडलाइन, दबाव या बड़ी चुनौती के समय आप काम कैसे संभालते हैं?'",
+        formula: "Mindset + Action taken + Positive delivery",
+        targetText: "When faced with tight deadlines, I usually [aap kya karte hain] (yaha vo bataiye jo aap karte hain, jaise prioritize critical tasks ya stay calm) to deliver on time.",
+        phonetic: "Wen fayst with tyte DED-lynez, eye YOO-zhoo-uh-lee [your action] too dih-LIV-er on tyme.",
+        hindi: "👉 वाक्य ढांचा: 'When faced with tight deadlines, I usually [आप क्या करते हैं] to deliver on time.' (जैसे: 'When faced with tight deadlines, I usually prioritize critical tasks.')",
         quickPills: [
           "I break heavy tasks into clear daily milestones to stay on schedule.",
           "Remaining calm and focused under pressure helps me deliver high quality.",
-          "How do you recommend handling unexpected blockers during a sprint?"
+          "When faced with tight deadlines, I usually [action] (yaha apna tareeqa batayein)"
         ]
       };
     }
@@ -1489,15 +1487,15 @@ class ConversationEngine {
     // 3. Career Milestone, Job Interviews, Placement, Ambition
     if (cleanAi.includes("interview") || cleanAi.includes("placement") || cleanAi.includes("career") || cleanAi.includes("milestone") || cleanAi.includes("accomplish") || cleanAi.includes("job") || cleanAi.includes("aspire") || cleanAi.includes("goal")) {
       return {
-        whatAriaIsAsking: "आरिया आपके करियर के मील के पत्थर, इंटरव्यू की तैयारी या बड़े लक्ष्यों के बारे में पूछ रही है।",
-        formula: "Core Milestone + Relentless Preparation + Long-term Impact",
-        targetText: "My primary milestone is to achieve fluent English communication and excel in high-impact technical interviews.",
-        phonetic: "My PRY-mair-ee MYLE-stone iz too uh-CHEEV FLOO-ent ING-glish kuh-myoo-nih-KAY-shun and ek-SEL in high-IM-pakt TEK-nih-kul IN-ter-vyooz.",
-        hindi: "मेरा प्राथमिक लक्ष्य धाराप्रवाह इंग्लिश बातचीत में महारत हासिल करना और बड़े टेक्निकल इंटरव्यूज में सफल होना है।",
+        whatAriaIsAsking: "रीवा आपके करियर के लक्ष्य, इंटरव्यू की तैयारी या सपनों के बारे में पूछ रही है।",
+        formula: "Core Goal + Focused Preparation + Long-term impact",
+        targetText: "My primary goal is to [apna lakshya] (yaha apna goal batayein, jaise achieve fluent English communication ya become a software engineer) and crack top interviews.",
+        phonetic: "My PRY-mair-ee gohl iz too [your goal] and krak top IN-ter-vyooz.",
+        hindi: "👉 वाक्य ढांचा: 'My primary goal is to [आपका लक्ष्य] and crack top interviews.' (जैसे: 'My primary goal is to achieve fluent English communication.')",
         quickPills: [
           "I am rigorously preparing for software engineering placements.",
           "My aim is to express complex technical concepts with complete clarity.",
-          "What advice would you give for making an outstanding first impression?"
+          "My primary goal is to [goal] (yaha apna lakshya batayein)"
         ]
       };
     }
@@ -1505,15 +1503,15 @@ class ConversationEngine {
     // 4. Teamwork, Conflict Resolution, Leadership, Collaboration
     if (cleanAi.includes("team") || cleanAi.includes("colleague") || cleanAi.includes("conflict") || cleanAi.includes("disagreement") || cleanAi.includes("collaborat") || cleanAi.includes("manager") || cleanAi.includes("leadership")) {
       return {
-        whatAriaIsAsking: "आरिया टीमवर्क, आपसी तालमेल या मतभेद सुलझाने के आपके तरीके के बारे में पूछ रही है।",
-        formula: "Active Listening + Mutual Respect + Finding Common Ground",
-        targetText: "I value collaborative teamwork, active listening, and reaching consensus through open, empathetic dialogue.",
-        phonetic: "Eye VAL-yoo kuh-LAB-uh-ruh-tiv TEEM-wurk, AK-tiv LIS-ning, and REE-ching kun-SEN-sus throo OH-pen, em-puh-THET-ik DY-uh-lahg.",
-        hindi: "मैं टीमवर्क, ध्यानपूर्वक सुनने और खुले, सहानुभूतिपूर्ण संवाद के माध्यम से सहमति बनाने को महत्व देता हूँ।",
+        whatAriaIsAsking: "रीवा टीमवर्क, आपसी तालमेल या मतभेद सुलझाने के आपके तरीके के बारे में पूछ रही है।",
+        formula: "Active Listening + Mutual Respect + Collaborative Solution",
+        targetText: "When working in a team, I focus on [teamwork ka tareeqa] (yaha vo batayein jaise active listening, open dialogue ya mutual respect) to reach the best outcome.",
+        phonetic: "Wen WUR-king in uh teem, eye FOH-kus on [your approach] too reech thuh best OWT-kum.",
+        hindi: "👉 वाक्य ढांचा: 'When working in a team, I focus on [तरीका] to reach the best outcome.' (जैसे: 'When working in a team, I focus on active listening and open dialogue.')",
         quickPills: [
           "I believe open and respectful communication resolves most team friction.",
           "I enjoy collaborating closely with people from diverse perspectives.",
-          "How do you suggest navigating differing architectural opinions in a team?"
+          "When working in a team, I focus on [approach] (yaha apna tareeqa batayein)"
         ]
       };
     }
@@ -1521,31 +1519,31 @@ class ConversationEngine {
     // 5. Daily Routine, Morning, Breakfast, Planning
     if (cleanAi.includes("morning") || cleanAi.includes("routine") || cleanAi.includes("start your day") || cleanAi.includes("breakfast") || cleanAi.includes("plans for today") || cleanAi.includes("yesterday") || cleanAi.includes("earlier today")) {
       return {
-        whatAriaIsAsking: "आरिया पूछ रही है: 'आज आपकी सुबह कैसी रही और आपने अपने दिन की क्या योजना बनाई?'",
-        formula: "Morning Activity + High Productivity + Positive Energy",
-        targetText: "My morning was productive. I outlined my priorities for the day and practiced spoken English with focus.",
-        phonetic: "My MOR-ning wuz pruh-DUK-tiv. Eye OWT-lynd my pry-OR-ih-teez fur thuh day and PRAK-tist SPOH-kun ING-glish with FOH-kus.",
-        hindi: "मेरी सुबह बहुत उपयोगी रही। मैंने आज के मुख्य कामों की योजना बनाई और एकाग्रता के साथ इंग्लिश बोलने का अभ्यास किया।",
+        whatAriaIsAsking: "रीवा पूछ रही है: 'आज आपकी सुबह कैसी रही और आपने अपने दिन की क्या शुरुआत की?'",
+        formula: "Morning Habit + Productivity + Positive Start",
+        targetText: "I usually start my morning with [subah ki aadat] (yaha apni aadat batayein, jaise a warm cup of tea ya light exercise) and then plan my day.",
+        phonetic: "Eye YOO-zhoo-uh-lee start my MOR-ning with [your habit] and then plan my day.",
+        hindi: "👉 वाक्य ढांचा: 'I usually start my morning with [सुबह की आदत] and then plan my day.' (जैसे: 'I usually start my morning with a warm cup of tea and then plan my day.')",
         quickPills: [
           "I started my morning early and organized all my key priorities.",
-          "Earlier today, I completed my coding tasks and spent time learning.",
-          "How does your daily routine usually look, Aria?"
+          "Earlier today, I completed my tasks and spent time learning English.",
+          "I usually start my morning with [habit] (yaha apni aadat batayein)"
         ]
       };
     }
 
-    // 6. Chai, Coffee, Evening Unwind, Recharge
-    if (cleanAi.includes("tea or coffee") || cleanAi.includes("unwind") || cleanAi.includes("recharge") || cleanAi.includes("cup of tea") || cleanAi.includes("chai") || cleanAi.includes("coffee") || cleanAi.includes("relax")) {
+    // 6. Chai, Coffee, Evening Unwind, Recharge (Food & Drinks)
+    if (cleanAi.includes("tea or coffee") || cleanAi.includes("unwind") || cleanAi.includes("recharge") || cleanAi.includes("cup of tea") || cleanAi.includes("chai") || cleanAi.includes("coffee") || cleanAi.includes("relax") || cleanAi.includes("drink")) {
       return {
-        whatAriaIsAsking: "आरिया पूछ रही है: 'रिलैक्स करने और तरोताजा होने के लिए आप चाय पसंद करते हैं या कॉफ़ी?'",
-        formula: "Clear Beverage Choice + Refreshing Benefit + Evening Habit",
-        targetText: "I definitely prefer having a hot cup of tea to unwind and stay refreshed throughout the evening.",
-        phonetic: "Eye DEF-ih-nit-lee pree-FUR HAV-ing uh hot kup uv tee too un-WYND and stay ree-FRESH-t throo-OWT thuh EEV-ning.",
-        hindi: "मैं शाम को रिलैक्स रहने और तरोताजा महसूस करने के लिए निश्चित रूप से गर्म चाय पीना पसंद करता हूँ।",
+        whatAriaIsAsking: "रीवा पूछ रही है: 'रिलैक्स करने और तरोताजा होने के लिए आप क्या पीना पसंद करते हैं?'",
+        formula: "Clear Beverage Choice + Refreshing Reason",
+        targetText: "I like to drink [beverage] (yaha vo bataiye jo aap peena pasand karte hai, jaise hot tea ya coffee) because it keeps me refreshed.",
+        phonetic: "Eye lyk too drink [your drink] bee-KUZ it keeps mee ree-FRESH-t.",
+        hindi: "👉 वाक्य ढांचा: 'I like to drink [ड्रिंक] because...' (यहाँ वह बताइए जो आप पीना पसंद करते हैं, जैसे: 'I like to drink hot tea because it keeps me refreshed.')",
         quickPills: [
-          "A hot cup of tea always helps me recharge after intense work.",
-          "I enjoy coffee when I need sharp focus for coding late at night.",
-          "What is your favorite way to unwind after a productive day?"
+          "I like to drink hot tea because it keeps me refreshed.",
+          "I usually prefer cold coffee whenever I need quick energy.",
+          "I like to drink [beverage] (yaha apni favorite drink batayein)"
         ]
       };
     }
@@ -1553,15 +1551,15 @@ class ConversationEngine {
     // 7. Hobbies, Free time, Weekend, Music, Books
     if (cleanAi.includes("hobby") || cleanAi.includes("free time") || cleanAi.includes("weekend") || cleanAi.includes("music") || cleanAi.includes("book") || cleanAi.includes("podcast") || cleanAi.includes("movie")) {
       return {
-        whatAriaIsAsking: "आरिया पूछ रही है: 'खाली समय या वीकेंड पर आप क्या करना पसंद करते हैं?'",
-        formula: "Passionate Activity + Learning Angle + Balanced Lifestyle",
-        targetText: "In my free time, I love listening to instrumental music, reading insightful books, and exploring new technologies.",
-        phonetic: "In my free tyme, eye luv LIS-ning too in-struh-MEN-tul MYOO-zik, REE-ding in-SYTE-ful books, and ek-SPLOR-ing noo tek-NAHL-uh-jeez.",
-        hindi: "खाली समय में मुझे मधुर संगीत सुनना, विचारोत्तेजक किताबें पढ़ना और नई तकनीकों को एक्सप्लोर करना बहुत पसंद है।",
+        whatAriaIsAsking: "रीवा पूछ रही है: 'खाली समय या वीकेंड पर आप क्या करना पसंद करते हैं?'",
+        formula: "Passionate Activity + Relaxing Benefit",
+        targetText: "In my free time, I really enjoy [hobby] (yaha vo bataiye jo aapko pasand hai, jaise listening to music, reading books ya playing cricket) because it relaxes me.",
+        phonetic: "In my free tyme, eye REE-uh-lee en-JOY [your hobby] bee-KUZ it ree-LAKS-iz mee.",
+        hindi: "👉 वाक्य ढांचा: 'In my free time, I really enjoy [हॉबी] because it relaxes me.' (जैसे: 'In my free time, I really enjoy listening to music because it relaxes me.')",
         quickPills: [
-          "I love listening to music and taking quiet walks outdoors.",
+          "In my free time, I love listening to music and taking quiet walks outdoors.",
           "Reading thought-provoking books helps me broaden my perspective.",
-          "What hobbies or topics do you find most fascinating?"
+          "In my free time, I really enjoy [hobby] (yaha apni hobby batayein)"
         ]
       };
     }
@@ -1569,15 +1567,15 @@ class ConversationEngine {
     // 8. Personal Strength, Proud Moments, Qualities
     if (cleanAi.includes("strength") || cleanAi.includes("greatest strength") || cleanAi.includes("proud") || cleanAi.includes("achievement") || cleanAi.includes("quality")) {
       return {
-        whatAriaIsAsking: "आरिया आपकी सबसे बड़ी ताकत या किसी उपलब्धि के बारे में पूछ रही है।",
-        formula: "Key Characteristic + Concrete Evidence + Professional Benefit",
-        targetText: "My greatest strength is my persistence in learning complex concepts and adapting quickly to new challenges.",
-        phonetic: "My GRAY-tist strength iz my per-SIS-tens in LUR-ning KOM-pleks KAHN-septs and uh-DAP-ting KWIK-lee too noo CHAL-en-jez.",
-        hindi: "मेरी सबसे बड़ी ताकत जटिल विषयों को गहराई से सीखने में मेरी निरंतरता और नई चुनौतियों के अनुसार तेजी से ढलना है।",
+        whatAriaIsAsking: "रीवा आपकी सबसे बड़ी ताकत या किसी खूबी के बारे में पूछ रही है।",
+        formula: "Key Characteristic + Concrete Benefit",
+        targetText: "My greatest strength is [apni khubi] (yaha apni khubi batayein, jaise staying calm under pressure, quick learning ya persistence) which helps me succeed.",
+        phonetic: "My GRAY-tist strength iz [your strength] which helps mee suk-SEED.",
+        hindi: "👉 वाक्य ढांचा: 'My greatest strength is [आपकी खूबी]...' (जैसे: 'My greatest strength is staying calm under pressure and learning fast.')",
         quickPills: [
           "My greatest strength is staying disciplined and solving problems calmly.",
           "I take pride in my attention to detail and reliable follow-through.",
-          "How can one highlight their strengths without sounding arrogant?"
+          "My greatest strength is [strength] (yaha apni khubi batayein)"
         ]
       };
     }
@@ -1585,15 +1583,15 @@ class ConversationEngine {
     // 9. English Hesitation, Fluency, Confidence
     if (cleanAi.includes("hesitation") || cleanAi.includes("confidence") || cleanAi.includes("fluency") || cleanAi.includes("speak english") || cleanAi.includes("tuti") || cleanAi.includes("fear") || cleanAi.includes("nervous")) {
       return {
-        whatAriaIsAsking: "आरिया इंग्लिश बोलने में झिझक या आत्मविश्वास बढ़ाने के बारे में चर्चा कर रही है।",
-        formula: "Acknowledging Real Effort + Embracing Practice + Rapid Progress",
-        targetText: "I used to feel nervous, but practicing daily conversations with you is building my real confidence.",
-        phonetic: "Eye yoozd too feel NUR-vus, but PRAK-tih-sing DAY-lee kahn-ver-SAY-shunz with yoo iz BIL-ding my reel KAHN-fih-dens.",
-        hindi: "पहले मुझे थोड़ी झिझक होती थी, लेकिन आपके साथ रोजाना बातचीत का अभ्यास करने से मेरा आत्मविश्वास तेजी से बढ़ रहा है।",
+        whatAriaIsAsking: "रीवा इंग्लिश बोलने में झिझक या आत्मविश्वास बढ़ाने के बारे में चर्चा कर रही है।",
+        formula: "Focus Area + Practice Habit + Confidence Gain",
+        targetText: "I am focusing on [kya improve karna hai] (yaha batayein jaise speaking without hesitation ya daily practice) to build real confidence.",
+        phonetic: "Eye am FOH-kus-ing on [your focus] too bild reel KAHN-fih-dens.",
+        hindi: "👉 वाक्य ढांचा: 'I am focusing on [सुधार का क्षेत्र] to build real confidence.' (जैसे: 'I am focusing on daily practice to build real confidence.')",
         quickPills: [
           "Daily practice helps me overcome hesitation step by step.",
           "I am focusing on clear thoughts rather than worrying about mistakes.",
-          "What is the quickest tip to eliminate filler words like 'um' and 'uh'?"
+          "I am focusing on [practice] (yaha apna focus batayein)"
         ]
       };
     }
@@ -1601,15 +1599,15 @@ class ConversationEngine {
     // 10. City, Hometown, Travel, Culture
     if (cleanAi.includes("city") || cleanAi.includes("hometown") || cleanAi.includes("where do you live") || cleanAi.includes("travel") || cleanAi.includes("culture") || cleanAi.includes("destination")) {
       return {
-        whatAriaIsAsking: "आरिया आपके शहर, संस्कृति या यात्रा के अनुभवों के बारे में पूछ रही है।",
-        formula: "Location + Cultural Richness + Personal Warmth",
-        targetText: "I live in a vibrant place known for its warm hospitality, diverse heritage, and delicious food.",
-        phonetic: "Eye liv in uh VY-brunt playss nohn fur its wawrm hahs-pih-TAL-ih-tee, dy-VURS HAIR-ih-tij, and dih-LISH-us food.",
-        hindi: "मैं एक जीवंत जगह पर रहता हूँ जो अपनी मेहमाननवाज़ी, समृद्ध विरासत और स्वादिष्ट व्यंजनों के लिए जानी जाती है।",
+        whatAriaIsAsking: "रीवा आपके शहर, संस्कृति या यात्रा के अनुभवों के बारे में पूछ रही है।",
+        formula: "Location + Specialty + Personal Warmth",
+        targetText: "I live in [apne shahar ka naam] (yaha apne shahar ka naam batayein) which is known for [khas baat] (yaha batayein jaise its rich culture ya delicious food).",
+        phonetic: "Eye liv in [your city] which iz nohn fur [its specialty].",
+        hindi: "👉 वाक्य ढांचा: 'I live in [शहर] which is known for [खासियत]। (जैसे: 'I live in Delhi which is known for its rich culture and food.')",
         quickPills: [
           "My hometown has a rich cultural heritage and a peaceful environment.",
           "Traveling allows us to gain fresh perspectives on different ways of life.",
-          "Have you ever experienced the diverse traditions of Indian cities?"
+          "I live in [city] (yaha apne shahar ka naam batayein)"
         ]
       };
     }
@@ -1617,13 +1615,13 @@ class ConversationEngine {
     // 10B. Feature Verification & Testing Guide
     if (cleanAi.includes("test all my functions") || cleanAi.includes("test every function") || cleanAi.includes("5 real-life test sentences") || cleanAi.includes("which feature would you like to test")) {
       return {
-        whatAriaIsAsking: "आरिया पूछ रही है कि आप कौन सा फीचर सबसे पहले टेस्ट करना चाहते हैं (मिस्टेक डिटेक्टर, फिलर वर्ड्स, या हिंदी ट्रांसलेटर)।",
+        whatAriaIsAsking: "रीवा पूछ रही है कि आप कौन सा फीचर सबसे पहले टेस्ट करना चाहते हैं (मिस्टेक डिटेक्टर, फिलर वर्ड्स, या हिंदी ट्रांसलेटर)।",
         formula: "Selected Feature + Real-Life Test Sentence + Immediate Spoken Execution",
-        targetText: `I would like to test the mistake detector with the sentence: "Myself ${userName}."`,
-        phonetic: `Eye wood lyk too test thuh mis-TAYK dih-TEK-tur with thuh SEN-tens: "My-SELF ${userName}."`,
-        hindi: `मैं मिस्टेक डिटेक्टर टेस्ट करना चाहता हूँ इस वाक्य के साथ: "Myself ${userName}."`,
+        targetText: 'I would like to test the mistake detector with the sentence: "Myself Rahul and I am having 3 years experience."',
+        phonetic: 'Eye wood lyk too test thuh mis-TAYK dih-TEK-tur with thuh SEN-tens: "My-SELF Rahul."',
+        hindi: 'मैं मिस्टेक डिटेक्टर टेस्ट करना चाहता हूँ इस वाक्य के साथ: "Myself Rahul and I am having 3 years experience."',
         quickPills: [
-          `Myself ${userName} and I am having 3 years experience.`,
+          "Myself Rahul and I am having 3 years experience.",
           "Um, I think, uh, actually, like, I want to learn English.",
           "मुझे जॉब इंटरव्यू की तैयारी करनी है"
         ]
@@ -1633,15 +1631,15 @@ class ConversationEngine {
     // 11. Greeting & How are you feeling
     if (cleanAi.includes("what is your name") || cleanAi.includes("how are you feeling") || cleanAi.includes("feeling today") || cleanAi.includes("welcome")) {
       return {
-        whatAriaIsAsking: `आरिया पूछ रही है: '${userName}, आज आपका मूड कैसा है और आप कैसा महसूस कर रहे हैं?'`,
-        formula: "Enthusiastic Greeting + Name + Positive Mood + Ready to Speak",
-        targetText: `Hello Aria, I am ${userName}. I am feeling energetic and excited to practice speaking English with you.`,
-        phonetic: `Huh-LOH AH-ree-uh, eye am ${userName}. Eye am FEEL-ing en-er-JET-ik and ek-SY-tid too PRAK-tis SPEE-king ING-glish with yoo.`,
-        hindi: `नमस्ते आरिया, मैं ${userName} हूँ। आज मैं ऊर्जावान महसूस कर रहा हूँ और आपके साथ इंग्लिश बोलने के लिए उत्साहित हूँ।`,
+        whatAriaIsAsking: "रीवा पूछ रही है: 'आज आपका मूड कैसा है और आप कैसा महसूस कर रहे हैं?'",
+        formula: "Enthusiastic Greeting + Current Mood + Ready to Speak",
+        targetText: "I am feeling [apna mood] (yaha apna mood batayein, jaise energetic, happy ya relaxed) and excited to practice speaking English.",
+        phonetic: "Eye am FEEL-ing [your mood] and ek-SY-tid too PRAK-tis SPEE-king ING-glish.",
+        hindi: "👉 वाक्य ढांचा: 'I am feeling [मूड] and excited to practice speaking English...' (जैसे: 'I am feeling energetic and excited to practice speaking English.')",
         quickPills: [
-          `Hello Aria! I am feeling very positive and ready to speak.`,
-          `I am doing great today, looking forward to our session!`,
-          `How are you feeling today, Aria?`
+          "I am feeling very positive and ready to speak!",
+          "I am doing great today, looking forward to our session!",
+          "I am feeling [mood] (yaha apna mood batayein)"
         ]
       };
     }
@@ -1649,76 +1647,76 @@ class ConversationEngine {
     // 12. Comparison / Preference (Startup vs MNC, A vs B)
     if (cleanAi.includes("prefer") || cleanAi.includes("would you rather") || cleanAi.includes("or do you prefer")) {
       return {
-        whatAriaIsAsking: "आरिया आपकी पसंद और प्राथमिकताओं के बारे में राय पूछ रही है।",
+        whatAriaIsAsking: "रीवा आपकी पसंद और प्राथमिकताओं के बारे में राय पूछ रही है।",
         formula: "Decisive Choice + Clear Justification + Balanced View",
-        targetText: "I would definitely choose a high-growth environment where I can take strong ownership and learn rapidly.",
-        phonetic: "Eye wood DEF-ih-nit-lee chooz uh high-GROHTH en-VY-run-ment wair eye kan tayk strawng OH-ner-ship and lurn RAP-id-lee.",
-        hindi: "मैं निश्चित रूप से ऐसे गतिशील माहौल को चुनूंगा जहाँ मुझे ज़िम्मेदारी लेने और तेजी से सीखने का अवसर मिले।",
+        targetText: "I definitely prefer [apni pasand] (yaha batayein jaise fast-growing startups ya structured companies) because [wajah] (yaha apni wajah batayein).",
+        phonetic: "Eye DEF-ih-nit-lee pree-FUR [your choice] bee-KUZ [your reason].",
+        hindi: "👉 वाक्य ढांचा: 'I definitely prefer [पसंद] because [वजह]। (जैसे: 'I definitely prefer startups because I can learn rapidly.')",
         quickPills: [
           "I value rapid learning and high ownership above everything.",
           "I appreciate structured processes and long-term stability.",
-          "In your view, what environment fosters the fastest professional growth?"
+          "I definitely prefer [choice] (yaha apni pasand batayein)"
         ]
       };
     }
 
-    // UNIVERSAL QUESTION PARSER: For any dynamic question asked by Aria
+    // UNIVERSAL QUESTION PARSER: For any dynamic question asked by Riva
     const lastQuestion = this.extractLastQuestionSentence(cleanAi);
-    let askingSummary = `आरिया पूछ रही है: "${lastQuestion}"`;
-    let smartTarget = "That is a thoughtful question. In my perspective, consistent dedication and clear communication make all the difference.";
-    let smartPhonetic = "That iz uh THAWT-ful KWES-chun. In my per-SPEK-tiv, kun-SIS-tent ded-ih-KAY-shun and kleer kuh-myoo-nih-KAY-shun mayk awl thuh DIF-er-ens.";
-    let smartHindi = "यह एक विचारणीय सवाल है। मेरे दृष्टिकोण से, निरंतर समर्पण और स्पष्ट संवाद सबसे बड़ा बदलाव लाते हैं।";
+    let askingSummary = `रीवा पूछ रही है: "${lastQuestion}"`;
+    let smartTarget = "In my perspective, [apna vichaar batayein] (yaha apna nazariya batayein, jaise consistent dedication ya clear communication) makes all the difference.";
+    let smartPhonetic = "In my per-SPEK-tiv, [your view] mayks awl thuh DIF-er-ens.";
+    let smartHindi = "👉 वाक्य ढांचा: 'In my perspective, [विचार] makes all the difference.' (जैसे: 'In my perspective, consistent dedication makes all the difference.')";
     let smartPills = [
       "I completely agree with that perspective.",
       "In my experience, consistent practice brings great results.",
-      "Could you share your thoughts on this as well?"
+      "In my perspective, [view] (yaha apna nazariya batayein)"
     ];
 
     if (/^how\b/i.test(lastQuestion)) {
-      askingSummary = `आरिया पूछ रही है कि आप यह काम कैसे करते हैं: "${lastQuestion}"`;
-      smartTarget = "I usually approach it by analyzing the situation, breaking it into simple steps, and taking steady action.";
-      smartPhonetic = "Eye YOO-zhoo-uh-lee uh-PROHCH it by AN-uh-ly-zing thuh sih-choo-AY-shun, BRAY-king it IN-too SIM-pul steps, and TAY-king STED-ee AK-shun.";
-      smartHindi = "मैं आमतौर पर स्थिति का विश्लेषण करके, उसे छोटे चरणों में बांटकर और लगातार कदम उठाकर काम करता हूँ।";
+      askingSummary = `रीवा पूछ रही है कि आप यह काम कैसे करते हैं: "${lastQuestion}"`;
+      smartTarget = "I usually approach this by [apna tareeqa batayein] (yaha batayein aap kaise karte hain, jaise planning ahead ya taking small steps) to achieve good results.";
+      smartPhonetic = "Eye YOO-zhoo-uh-lee uh-PROHCH this by [your method] too uh-CHEEV good ree-ZULTS.";
+      smartHindi = "👉 वाक्य ढांचा: 'I usually approach this by [तरीका] to achieve good results.' (जैसे: 'I usually approach this by breaking it into simple steps.')";
       smartPills = [
         "I break it down into simple, manageable steps.",
         "I stay focused on the end goal and execute steadily.",
-        "How would you approach this challenge, Aria?"
+        "I approach this by [method] (yaha apna tareeqa batayein)"
       ];
     } else if (/^why\b/i.test(lastQuestion)) {
-      askingSummary = `आरिया कारण या प्रेरणा पूछ रही है: "${lastQuestion}"`;
-      smartTarget = "The main reason is that it drives meaningful self-improvement and allows me to create valuable outcomes.";
-      smartPhonetic = "Thuh mayn REE-zun iz that it dryvz MEEN-ing-ful self-im-PROOV-ment and uh-LOWZ mee too kree-AYT VAL-yoo-uh-bul OWT-kumz.";
-      smartHindi = "मुख्य कारण यह है कि यह आत्म-सुधार को बढ़ावा देता है और मुझे मूल्यवान परिणाम हासिल करने में मदद करता है।";
+      askingSummary = `रीवा कारण या प्रेरणा पूछ रही है: "${lastQuestion}"`;
+      smartTarget = "The main reason is that [apna reason batayein] (yaha apni wajah batayein ki aap aisa kyon sochte hain) and it helps me grow.";
+      smartPhonetic = "Thuh mayn REE-zun iz that [your reason] and it helps mee groh.";
+      smartHindi = "👉 वाक्य ढांचा: 'The main reason is that [वजह] and it helps me grow.' (जैसे: 'The main reason is that it challenges me to improve.')";
       smartPills = [
         "Because it challenges me to grow and improve every single day.",
         "It aligns directly with my long-term career vision.",
-        "What motivated you to explore this topic?"
+        "The main reason is that [reason] (yaha wajah batayein)"
       ];
     } else if (/^(what|which)\b/i.test(lastQuestion)) {
-      askingSummary = `आरिया आपकी राय या विशिष्ट पसंद पूछ रही है: "${lastQuestion}"`;
-      smartTarget = "I would highlight that continuous curiosity and structured execution are the most essential factors.";
-      smartPhonetic = "Eye wood HY-lyte that kun-TIN-yoo-us kyoor-ee-AH-sih-tee and STRUK-churd ek-seh-KYOO-shun ar thuh mohst eh-SEN-shul FAK-turz.";
-      smartHindi = "मैं यह रेखांकित करूँगा कि निरंतर जिज्ञासा और व्यवस्थित क्रियान्वयन सबसे आवश्यक कारक हैं।";
+      askingSummary = `रीवा आपकी राय या विशिष्ट पसंद पूछ रही है: "${lastQuestion}"`;
+      smartTarget = "In my opinion, [apna vichaar batayein] (yaha apni rai batayein, jaise continuous learning ya consistency) is the most essential factor.";
+      smartPhonetic = "In my oh-PIN-yun, [your opinion] iz thuh mohst eh-SEN-shul FAK-tur.";
+      smartHindi = "👉 वाक्य ढांचा: 'In my opinion, [विचार/पसंद] is the most essential factor.' (जैसे: 'In my opinion, continuous learning is the most essential factor.')";
       smartPills = [
         "I believe that consistent curiosity is the biggest factor.",
         "For me, clear planning and steady discipline matter most.",
-        "What would be your top recommendation for this?"
+        "In my opinion, [opinion] (yaha apni rai batayein)"
       ];
     } else if (/^(do|did|have|are|is|can|could|would)\b/i.test(lastQuestion)) {
-      askingSummary = `आरिया आपकी सहमति या प्रत्यक्ष अनुभव पूछ रही है: "${lastQuestion}"`;
-      smartTarget = "Yes, absolutely! I have experienced that firsthand, and it taught me valuable lessons.";
-      smartPhonetic = "Yes, ab-soh-LOOT-lee! Eye hav ek-SPEER-ee-enst that FURST-hand, and it tawt mee VAL-yoo-uh-bul LES-unz.";
-      smartHindi = "हाँ, बिल्कुल! मैंने इसे स्वयं अनुभव किया है, और इससे मुझे बहुत कुछ सीखने को मिला।";
+      askingSummary = `रीवा आपकी सहमति या प्रत्यक्ष अनुभव पूछ रही है: "${lastQuestion}"`;
+      smartTarget = "Yes, absolutely! I [apna anubhav ya sahmat batayein] (yaha batayein jaise strongly agree ya have experienced this firsthand) and it taught me a lot.";
+      smartPhonetic = "Yes, ab-soh-LOOT-lee! Eye [your experience] and it tawt mee uh laht.";
+      smartHindi = "👉 वाक्य ढांचा: 'Yes, absolutely! I [अनुभव/सहमति] and it taught me a lot.' (जैसे: 'Yes, absolutely! I have experienced this firsthand.')";
       smartPills = [
         "Yes, absolutely! I strongly agree with that.",
         "To be honest, I am still exploring that area.",
-        "Have you encountered a similar situation recently?"
+        "Yes, absolutely! I [experience] (yaha apna anubhav batayein)"
       ];
     }
 
     return {
       whatAriaIsAsking: askingSummary,
-      formula: "Direct Perspective + Structured Justification + Conversational Question",
+      formula: "Sentence Structure + Hinglish Guidance + Quick Options",
       targetText: smartTarget,
       phonetic: smartPhonetic,
       hindi: smartHindi,
@@ -1796,14 +1794,14 @@ class ConversationEngine {
         if (cleanText.includes("myself")) {
           return {
             emotion: "💡 Coaching & Guiding",
-            text: `Hello ${userName}, you have wonderful conversational energy! Remember our golden first-impression rule: never start with 'Myself'. In professional and real-life chats, always say 'I am' or 'My name is'—it sounds so poised and natural! What is one personal strength or passion you take pride in?`,
-            hindi: `नमस्ते ${userName}, आपकी ऊर्जा बहुत अच्छी है! याद रखें: 'Myself' से वाक्य शुरू न करें, 'I am' या 'My name is' बोलें। बताइए: वह कौन सी व्यक्तिगत ताकत है जिस पर आपको गर्व है?`
+            text: `Hey, you have wonderful conversational energy! Remember our golden first-impression rule: never start with 'Myself'. In professional and real-life chats, always say 'I am' or 'My name is'—it sounds so poised and natural! What is one personal strength or passion you take pride in?`,
+            hindi: `नमस्ते, आपकी ऊर्जा बहुत अच्छी है! याद रखें: 'Myself' से वाक्य शुरू न करें, 'I am' या 'My name is' बोलें। बताइए: वह कौन सी व्यक्तिगत ताकत है जिस पर आपको गर्व है?`
           };
         }
         return {
           emotion: "🤩 Impressed & Proud",
-          text: `Outstanding introduction, ${userName}! You spoke with remarkable clarity and nailed the 7-second rule! Day 1 is now locked in your memory progress. What are you most excited to learn next?`,
-          hindi: `लाजवाब परिचय, ${userName}! आपने 7-सेकंड नियम का बहुत अच्छे से पालन किया। डे 1 अब आपके प्रोग्रेस में पूरा हो गया है!`
+          text: `Outstanding introduction! You spoke with remarkable clarity and nailed the 7-second rule! Day 1 is now locked in your memory progress. What are you most excited to learn next?`,
+          hindi: `लाजवाब परिचय! आपने 7-सेकंड नियम का बहुत अच्छे से पालन किया। डे 1 अब आपके प्रोग्रेस में पूरा हो गया है!`
         };
       }
 
@@ -1812,7 +1810,7 @@ class ConversationEngine {
         if (cleanText.includes("yesterday i go") || cleanText.includes("take tea")) {
           return {
             emotion: "💡 Coaching & Guiding",
-            text: `Good effort, ${userName}! A quick conversational polish: say 'yesterday I went' and 'had some tea'. You are getting sharper every minute! Tell me, what do you usually enjoy doing on Sunday evenings?`,
+            text: `Good effort! A quick conversational polish: say 'yesterday I went' and 'had some tea'. You are getting sharper every minute! Tell me, what do you usually enjoy doing on Sunday evenings?`,
             hindi: `अच्छा प्रयास! 'yesterday I went' और 'had some tea' बोलें। आप हर मिनट बेहतर हो रहे हैं! रविवार की शाम को क्या करना पसंद करते हैं?`
           };
         }
@@ -1827,8 +1825,8 @@ class ConversationEngine {
       if (dayNum === 3) {
         return {
           emotion: "✨ Inspiring & Motivating",
-          text: `Bravo, ${userName}! I loved your calm delivery and steady pace. Taking a silent pause instead of saying 'Um' makes you sound like a true leader! What is a big career dream you are working toward?`,
-          hindi: `शाबाश, ${userName}! आपने बहुत शांत और आत्मविश्वास से बोला। 'Um' की जगह शांत पॉज लेना ही लीडर्स की निशानी है!`
+          text: `Bravo! I loved your calm delivery and steady pace. Taking a silent pause instead of saying 'Um' makes you sound like a true leader! What is a big career dream you are working toward?`,
+          hindi: `शाबाश! आपने बहुत शांत और आत्मविश्वास से बोला। 'Um' की जगह शांत पॉज लेना ही लीडर्स की निशानी है!`
         };
       }
 
@@ -1836,7 +1834,7 @@ class ConversationEngine {
       if (dayNum === 4) {
         return {
           emotion: "🌸 Warm & Relatable",
-          text: `Fantastic conversational Ping-Pong! Adding a thoughtful personal detail and asking a question back keeps the conversation lively and engaging. Aria loves chatting with you! Do you prefer exploring new cities and culture, or relaxing peacefully in nature?`,
+          text: `Fantastic conversational Ping-Pong! Adding a thoughtful personal detail and asking a question back keeps the conversation lively and engaging. I love chatting with you! Do you prefer exploring new cities and culture, or relaxing peacefully in nature?`,
           hindi: `कमाल का पिंग-पॉन्ग स्टाइल! अतिरिक्त जानकारी जोड़कर सवाल पूछने से बातचीत कभी खत्म नहीं होती!`
         };
       }
@@ -1845,7 +1843,7 @@ class ConversationEngine {
       if (dayNum === 5) {
         return {
           emotion: "🎯 Professional & Poised",
-          text: `Spot-on diplomacy, ${userName}! Disagreeing politely using 'however' and 'from my perspective' is the trademark of top communicators. How would you handle a teammate during a tight project deadline?`,
+          text: `Spot-on diplomacy! Disagreeing politely using 'however' and 'from my perspective' is the trademark of top communicators. How would you handle a teammate during a tight project deadline?`,
           hindi: `सटीक कूटनीति! 'however' और 'from my perspective' का प्रयोग करके विनम्र असहमति जताना बहुत प्रभावशाली होता है!`
         };
       }
@@ -1863,7 +1861,7 @@ class ConversationEngine {
       if (dayNum === 7) {
         return {
           emotion: "💡 Placement Coach",
-          text: `Remarkable STAR delivery, ${userName}! Clear Situation, decisive Action, and measurable Results. You are truly interview-ready! What dream company or role are you targeting next?`,
+          text: `Remarkable STAR delivery! Clear Situation, decisive Action, and measurable Results. You are truly interview-ready! What dream company or role are you targeting next?`,
           hindi: `लाजवाब STAR डिलीवरी! स्पष्ट स्थिति, निर्णायक कदम और मापने योग्य परिणाम। आप इंटरव्यू के लिए पूरी तरह तैयार हैं!`
         };
       }
@@ -1939,8 +1937,8 @@ class ConversationEngine {
     if (isTestIntent) {
       return {
         emotion: "💡 Feature Coach",
-        text: `I'd love to help you test all my functions, ${userName}! Here are 5 real-life test sentences to check every feature right now:\n1. Test Mistake Detector & Visual Diff: Say "Myself ${userName} and I am having 3 years experience."\n2. Test Filler Word Counter: Say "Um, I think, uh, actually I want to improve."\n3. Test Hindi-to-English translation: Say "मुझे जॉब इंटरव्यू से बहुत डर लग रहा है".\n4. Test Show Hint: Tap 'Show hint ∨' below to see the phonetic guide and target response.\n5. Test Voice & Speed: Tap the golden mic or adjust speaking speed from the top bar!\nWhich feature would you like to test first?`,
-        hindi: `ज़रूर ${userName}! सभी फीचर्स टेस्ट करने के लिए ये 5 रियल-लाइफ वाक्य आज़माएँ:\n1. मिस्टेक डिटेक्टर: बोलें "Myself ${userName} and I am having 3 years experience."\n2. फिलर वर्ड्स: बोलें "Um, I think, uh, actually I want to improve."\n3. हिंदी ट्रांसलेटर: बोलें "मुझे जॉब इंटरव्यू से बहुत डर लग रहा है".\n4. शो हिंट: नीचे 'Show hint ∨' पर टैप करके फोनेटिक गाइड और सही जवाब देखें।\n5. वॉइस और स्पीड: गोल्डन माइक पर टैप करें या ऊपर से स्पीड बदलें!\nआप सबसे पहले कौन सा फीचर टेस्ट करना चाहेंगे?`
+        text: `I'd love to help you test all my functions! Here are 5 real-life test sentences to check every feature right now:\n1. Test Mistake Detector & Visual Diff: Say "Myself Rahul and I am having 3 years experience."\n2. Test Filler Word Counter: Say "Um, I think, uh, actually I want to improve."\n3. Test Hindi-to-English translation: Say "मुझे जॉब इंटरव्यू से बहुत डर लग रहा है".\n4. Test Show Hint: Tap 'Show hint ∨' below to see the phonetic guide and target response.\n5. Test Voice & Speed: Tap the golden mic or adjust speaking speed from the top bar!\nWhich feature would you like to test first?`,
+        hindi: `ज़रूर! सभी फीचर्स टेस्ट करने के लिए ये 5 रियल-लाइफ वाक्य आज़माएँ:\n1. मिस्टेक डिटेक्टर: बोलें "Myself Rahul and I am having 3 years experience."\n2. फिलर वर्ड्स: बोलें "Um, I think, uh, actually I want to improve."\n3. हिंदी ट्रांसलेटर: बोलें "मुझे जॉब इंटरव्यू से बहुत डर लग रहा है".\n4. शो हिंट: नीचे 'Show hint ∨' पर टैप करके फोनेटिक गाइड और सही जवाब देखें।\n5. वॉइस और स्पीड: गोल्डन माइक पर टैप करें या ऊपर से स्पीड बदलें!\nआप सबसे पहले कौन सा फीचर टेस्ट करना चाहेंगे?`
       };
     }
 
@@ -2287,8 +2285,6 @@ class ConversationEngine {
    */
   generateSmartHints(aiResponse, mode, level, lessonDay = null) {
     const cleanAi = (aiResponse || "").toLowerCase();
-    const userMemory = this.memory.data;
-    const userName = userMemory.profile.name || "friend";
 
     // 1. Structured Lesson Practice Challenge Pills
     if (lessonDay) {
@@ -2303,26 +2299,26 @@ class ConversationEngine {
       return [
         `"My day was pretty busy, but I'm finally relaxing now! How's your day going?"`,
         `"Honestly, today was quite fun and productive! What about yours?"`,
-        `"I just had a nice warm cup of tea and feeling refreshed!"`
+        `"My day was [kaisa raha] (yaha vo bataiye ki din kaisa raha, jaise busy ya relaxing)"`
       ];
     }
 
-    // 2. Direct Answers to Aria's question
+    // 2. Direct Answers to Riva's question
     // A. Name & How are you feeling
     if (cleanAi.includes("what is your name") || cleanAi.includes("how are you feeling") || cleanAi.includes("feeling today") || cleanAi.includes("name and")) {
       return [
-        `"Hello Aria, my name is ${userName} and I'm feeling great today."`,
         `"I am feeling very positive and excited to speak with you!"`,
-        `"Hello! My name is ${userName}, and I am doing wonderful."`
+        `"I am feeling great today, looking forward to our conversation!"`,
+        `"I am feeling [mood] (yaha apna mood batayein, jaise happy, energetic ya relaxed)"`
       ];
     }
 
-    // B. Food, Tea, Coffee, Breakfast
+    // B. Food, Tea, Coffee, Breakfast, Drinks
     if (cleanAi.includes("food") || cleanAi.includes("fruit") || cleanAi.includes("eat") || cleanAi.includes("tea") || cleanAi.includes("coffee") || cleanAi.includes("breakfast") || cleanAi.includes("drink")) {
       return [
-        `"I really love having hot tea and light biscuits in the morning."`,
-        `"My favorite food is fresh home-cooked rice and vegetables."`,
-        `"I usually prefer having a warm cup of coffee to start my day."`
+        `"I like to drink hot tea because it keeps me refreshed."`,
+        `"I usually prefer a warm cup of coffee to start my day."`,
+        `"I like to drink [beverage] (yaha vo bataiye jo aap peena pasand karte hai, jaise tea ya coffee)"`
       ];
     }
 
@@ -2331,7 +2327,7 @@ class ConversationEngine {
       return [
         `"Earlier today, I finished all my tasks and practiced English."`,
         `"Yesterday, I went outside and spent wonderful time with my friends."`,
-        `"I had quite a productive day working and learning new concepts."`
+        `"Earlier today, I [kya kiya] (yaha batayein jaise completed my project ya went out)"`
       ];
     }
 
@@ -2340,7 +2336,7 @@ class ConversationEngine {
       return [
         `"In my free time, I really enjoy listening to good music."`,
         `"I love going for evening walks and unwinding in nature."`,
-        `"My favorite hobby is reading books and watching documentaries."`
+        `"In my free time, I like [hobby] (yaha apni hobby batayein, jaise music ya sports)"`
       ];
     }
 
@@ -2349,7 +2345,7 @@ class ConversationEngine {
       return [
         `"I love exploring calm destinations surrounded by nature and rich culture."`,
         `"Traveling helps me relax and gain fresh, inspiring perspectives."`,
-        `"I enjoy visiting historical landmarks and learning about their heritage."`
+        `"I would love to visit [jagah ka naam] (yaha apni pasandida jagah batayein)"`
       ];
     }
 
@@ -2358,7 +2354,7 @@ class ConversationEngine {
       return [
         `"Currently, I am focusing on my studies and career opportunities."`,
         `"My main goal is to speak fluent English with natural confidence."`,
-        `"I am preparing hard for my upcoming job interviews and growth."`
+        `"My primary goal is to [apna goal] (yaha apna lakshya batayein, jaise become a developer)"`
       ];
     }
 
@@ -2367,7 +2363,7 @@ class ConversationEngine {
       return [
         `"When facing a tight deadline, I prioritized key tasks and succeeded."`,
         `"I resolved the challenge by communicating clearly with my team."`,
-        `"Through focused effort, we achieved a measurable 20% improvement."`
+        `"When facing a challenge, I usually [action] (yaha apna tareeqa batayein)"`
       ];
     }
 
@@ -2375,7 +2371,7 @@ class ConversationEngine {
     return [
       `"Haha totally, I agree with you!"`,
       `"Honestly, that sounds really interesting! Tell me more."`,
-      `"My day was pretty relaxing. What about yours?"`
+      `"In my perspective, [vichaar] (yaha apni rai batayein)"`
     ];
   }
 
@@ -2386,6 +2382,8 @@ class ConversationEngine {
 
     const prompt = `You are Riva, an authentic, charismatic, real-life human friend talking on a casual phone call or hanging out over tea.
 CRITICAL INSTRUCTION: You MUST speak and behave like a real living human being, NOT an AI assistant, bot, or teacher.
+- Speak naturally and casually, like two real friends hanging out.
+- Do NOT repeatedly use or say the user's name in every turn. In real life, close friends NEVER repeat each other's name in every sentence—it sounds fake and robotic!
 - Use natural human warmth, casual banter, and authentic reactions (like "Haha totally", "Oh wow", "I hear you!", "Honestly", "Arey no worries").
 - Do NOT lecture the user on grammar. If they made a slip, naturally model the right words in a friendly conversational flow.
 - NEVER sound like a robotic automated customer service or exam bot.
@@ -2396,7 +2394,6 @@ CRITICAL INSTRUCTION: You MUST speak and behave like a real living human being, 
   "emotion": "Emoji and feeling, e.g. 🌸 Warm & Friendly, ☕ Relaxed & Casual, or 🤩 Excited"
 }
 
-Learner Name: ${userName}
 Goal: ${userGoal}
 User said: "${text}"
 ${analysis && analysis.hasError ? `Note: User slipped on "${analysis.matchedRule ? analysis.matchedRule.wrong : ''}". Natural phrasing: "${analysis.corrected}".` : ''}`;
