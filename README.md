@@ -2,7 +2,7 @@
 
 An AI-powered spoken English partner and communication improvement web app inspired by **PW Talk Riva** and conversational speech AI. Designed to help learners build spoken fluency from **Tooti-Footi (Broken English)** to **Advanced Campus Placements & Job Interviews**, with full human emotional expression.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/abhishektripathi9/TalkRiva-AI)
 
 ---
 
