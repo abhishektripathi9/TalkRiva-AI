@@ -1591,6 +1591,22 @@ class ConversationEngine {
       };
     }
 
+    // 10B. Feature Verification & Testing Guide
+    if (cleanAi.includes("test all my functions") || cleanAi.includes("test every function") || cleanAi.includes("5 real-life test sentences") || cleanAi.includes("which feature would you like to test")) {
+      return {
+        whatAriaIsAsking: "आरिया पूछ रही है कि आप कौन सा फीचर सबसे पहले टेस्ट करना चाहते हैं (मिस्टेक डिटेक्टर, फिलर वर्ड्स, या हिंदी ट्रांसलेटर)।",
+        formula: "Selected Feature + Real-Life Test Sentence + Immediate Spoken Execution",
+        targetText: `I would like to test the mistake detector with the sentence: "Myself ${userName}."`,
+        phonetic: `Eye wood lyk too test thuh mis-TAYK dih-TEK-tur with thuh SEN-tens: "My-SELF ${userName}."`,
+        hindi: `मैं मिस्टेक डिटेक्टर टेस्ट करना चाहता हूँ इस वाक्य के साथ: "Myself ${userName}."`,
+        quickPills: [
+          `Myself ${userName} and I am having 3 years experience.`,
+          "Um, I think, uh, actually, like, I want to learn English.",
+          "मुझे जॉब इंटरव्यू की तैयारी करनी है"
+        ]
+      };
+    }
+
     // 11. Greeting & How are you feeling
     if (cleanAi.includes("what is your name") || cleanAi.includes("how are you feeling") || cleanAi.includes("feeling today") || cleanAi.includes("welcome")) {
       return {
@@ -1857,6 +1873,20 @@ class ConversationEngine {
       } else if (analysis.corrected && analysis.corrected !== text) {
         gentlePolish = `By the way, a smooth native way to phrase that is: "${analysis.corrected}". `;
       }
+    }
+
+    // 1B. Real-Life Feature Verification / Test Every Function Intent
+    const isTestIntent = (
+      (cleanText.includes("check") || cleanText.includes("test") || cleanText.includes("verify") || cleanText.includes("guide") || cleanText.includes("how to")) &&
+      (cleanText.includes("function") || cleanText.includes("feature") || cleanText.includes("work") || cleanText.includes("every") || cleanText.includes("all"))
+    ) || cleanText.includes("real life use") || cleanText.includes("reallife use") || cleanText.includes("test every") || cleanText.includes("test all");
+
+    if (isTestIntent) {
+      return {
+        emotion: "💡 Feature Coach",
+        text: `I'd love to help you test all my functions, ${userName}! Here are 5 real-life test sentences to check every feature right now:\n1. Test Mistake Detector & Visual Diff: Say "Myself ${userName} and I am having 3 years experience."\n2. Test Filler Word Counter: Say "Um, I think, uh, actually I want to improve."\n3. Test Hindi-to-English translation: Say "मुझे जॉब इंटरव्यू से बहुत डर लग रहा है".\n4. Test Show Hint: Tap 'Show hint ∨' below to see the phonetic guide and target response.\n5. Test Voice & Speed: Tap the golden mic or adjust speaking speed from the top bar!\nWhich feature would you like to test first?`,
+        hindi: `ज़रूर ${userName}! सभी फीचर्स टेस्ट करने के लिए ये 5 रियल-लाइफ वाक्य आज़माएँ:\n1. मिस्टेक डिटेक्टर: बोलें "Myself ${userName} and I am having 3 years experience."\n2. फिलर वर्ड्स: बोलें "Um, I think, uh, actually I want to improve."\n3. हिंदी ट्रांसलेटर: बोलें "मुझे जॉब इंटरव्यू से बहुत डर लग रहा है".\n4. शो हिंट: नीचे 'Show hint ∨' पर टैप करके फोनेटिक गाइड और सही जवाब देखें।\n5. वॉइस और स्पीड: गोल्डन माइक पर टैप करें या ऊपर से स्पीड बदलें!\nआप सबसे पहले कौन सा फीचर टेस्ट करना चाहेंगे?`
+      };
     }
 
     // 2. Travel, Culture & Memorable Experiences
