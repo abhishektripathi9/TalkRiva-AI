@@ -1390,7 +1390,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     draw();
   }
-  startVisualizerAnimation();
+  // Fullscreen Management (PC & Mobile)
+  function toggleFullscreen() {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      const docEl = document.documentElement;
+      if (docEl.requestFullscreen) {
+        docEl.requestFullscreen().catch(err => console.warn("Fullscreen request error:", err));
+      } else if (docEl.webkitRequestFullscreen) {
+        docEl.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(err => console.warn("Exit fullscreen error:", err));
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+
+  const dashFsBtn = document.getElementById('dash-fullscreen-btn');
+  const roomFsBtn = document.getElementById('room-fullscreen-btn');
+  dashFsBtn?.addEventListener('click', toggleFullscreen);
+  roomFsBtn?.addEventListener('click', toggleFullscreen);
+
+  function handleFullscreenChange() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    document.querySelectorAll('.fs-icon').forEach(icon => {
+      icon.textContent = isFs ? '🗗' : '⛶';
+    });
+    const dashFsSpan = dashFsBtn?.querySelector('span:last-child');
+    if (dashFsSpan) {
+      dashFsSpan.textContent = isFs ? 'Exit Full' : 'Fullscreen';
+    }
+  }
+
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 
   // Initial State Check (User Requirement: Registration Portal First)
   initPortalState();

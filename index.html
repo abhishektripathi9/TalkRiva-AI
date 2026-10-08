@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#060912">
   <title>TalkRiva AI — Learn Spoken English with Aria (Clear Female Voice Partner)</title>
   <meta name="description" content="100% Free AI English Speaking Coach with Aria. Real-life communication mastery, first impression tips, daily vocabularies, and interactive practice from tooti-footi to advanced level.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -234,6 +238,9 @@
         </div>
 
         <div class="dash-header-actions">
+          <button id="dash-fullscreen-btn" class="dash-action-btn fullscreen-btn" title="Toggle Fullscreen (फुलस्क्रीन)">
+            <span class="fs-icon">⛶</span> <span>Fullscreen</span>
+          </button>
           <button id="open-memory-modal-btn" class="dash-action-btn memory-btn" title="View Aria's Memory">
             <span>🧠 Aria's Memory</span>
           </button>
@@ -552,6 +559,11 @@
           <button id="toggle-analysis-panel-btn" class="room-gear-btn" title="Settings & Mistake Detector">
             <span>⚙️</span>
             <span class="tool-count-badge" id="tool-mistakes-badge">0</span>
+          </button>
+
+          <!-- Fullscreen Toggle Button -->
+          <button id="room-fullscreen-btn" class="room-action-btn-fs" title="Toggle Fullscreen (फुलस्क्रीन)">
+            <span class="fs-icon">⛶</span>
           </button>
         </div>
       </header>
