@@ -1020,7 +1020,14 @@ class ConversationEngine {
     let aiEmotion = "🌸 Warm & Friendly";
     if (this.engineType === 'gemini' && this.apiKey) {
       try {
-        aiResponse = await this.callGeminiAPI({ text, mode, scenarioId, partner, level, analysis, lessonDay });
+        const geminiRes = await this.callGeminiAPI({ text, mode, scenarioId, partner, level, analysis, lessonDay });
+        if (typeof geminiRes === 'object' && geminiRes !== null) {
+          aiResponse = geminiRes.text || "";
+          aiHindi = geminiRes.hindi || "";
+          aiEmotion = geminiRes.emotion || "🌸 Warm & Friendly";
+        } else {
+          aiResponse = geminiRes;
+        }
       } catch (err) {
         console.warn("Gemini API fallback to local engine:", err);
         const local = this.generateLocalResponse({ text, mode, scenarioId, partner, level, analysis, lessonDay });
@@ -1429,6 +1436,22 @@ class ConversationEngine {
           ]
         };
       }
+    }
+
+    // 0. Human Friendship & Natural Chat Guide
+    if (cleanAi.includes("real-life buddy") || cleanAi.includes("hanging out") || cleanAi.includes("over chai") || cleanAi.includes("robotic bot talk")) {
+      return {
+        whatAriaIsAsking: "रीवा कह रही है कि अब से हम दोस्तों की तरह बात करेंगे—पूछ रही है कि आज का दिन कैसा रहा!",
+        formula: "Casual greeting + Daily summary + Relaxed tone",
+        targetText: "My day was pretty busy, but I'm finally relaxing now! How's your day going?",
+        phonetic: "My day wuz PRIT-ee BIZ-ee, but eye'm FY-nuh-lee ree-LAKS-ing now! How'z yoor day GOH-ing?",
+        hindi: "आज का दिन काफी व्यस्त रहा, पर अब मैं आराम कर रहा हूँ! आपका दिन कैसा चल रहा है?",
+        quickPills: [
+          "My day was pretty busy, but I'm relaxing now!",
+          "Honestly, today was quite fun and productive!",
+          "I just had a nice cup of hot tea!"
+        ]
+      };
     }
 
     // 1. Projects, Coding, Software, Bug, Architecture
@@ -1847,39 +1870,71 @@ class ConversationEngine {
     }
 
     // ------------------------------------------------------------------------
-    // CASE B: FREE CONVERSATIONAL DIALOGUE (REAL-LIFE & PROFILE PERSONALIZED)
+    // ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // CASE B: FREE CONVERSATIONAL DIALOGUE (REAL HUMAN EMOTION & PERSONALITY)
     // ------------------------------------------------------------------------
 
-    // 1. Check if user spoke Hindi or asked for translation
-    if (this.isHindiText(text)) {
-      const trans = this.translateHindiToEnglish(text);
+    // 1. Human Friendship & Natural Chat Request ("behave like human", "sahi se baat kare", etc.)
+    const isHumanRequest = (
+      cleanText.includes("behave like human") ||
+      cleanText.includes("behave like a human") ||
+      cleanText.includes("talk like human") ||
+      cleanText.includes("talk like a human") ||
+      cleanText.includes("speak like human") ||
+      cleanText.includes("sound like human") ||
+      cleanText.includes("act like human") ||
+      cleanText.includes("real human") ||
+      cleanText.includes("real life person") ||
+      cleanText.includes("sahi se baat") ||
+      cleanText.includes("aisa na lage ki ai") ||
+      cleanText.includes("ai ki tarah") ||
+      cleanText.includes("dost ki tarah") ||
+      cleanText.includes("insan ki tarah") ||
+      cleanText.includes("not like ai") ||
+      cleanText.includes("dont talk like ai") ||
+      cleanText.includes("don't talk like ai") ||
+      (cleanText.includes("behave") && cleanText.includes("human"))
+    );
+
+    if (isHumanRequest) {
       return {
-        emotion: "🤗 Supportive & Caring",
-        text: `Don't worry at all, ${userName}! It is completely natural to express your initial thoughts in your native language. In English, you can say that elegantly as: "${trans.english}". Let's practice saying that together with confidence! How does that sound?`,
-        hindi: `कोई बात नहीं, ${userName}! इंग्लिश में आप ऐसे कह सकते हैं: "${trans.english}"। चलिए साथ में बोलकर अभ्यास करते हैं!`,
-        translatedHint: trans.english
+        emotion: "🌸 Warm & Authentic",
+        text: `Haha, I hear you loud and clear! Done—no more robotic bot talk, formulaic lines, or textbook lectures! From right now, think of me as your real-life buddy hanging out with you over chai. We'll talk just like two normal friends chatting about our day, college, dreams, work, or funny moments with zero pressure. Tell me, how was your day today, and what's on your mind?`,
+        hindi: `हाहा, मैं आपकी बात बिल्कुल समझ गई! कोई किताबी या बॉट वाली बातें नहीं। अब से मुझे अपनी सच्ची दोस्त समझिए, जैसे हम साथ बैठकर चाय पीते हुए गपशप कर रहे हों। बताइए, आज का दिन कैसा बीता और अभी मन में क्या चल रहा है?`
       };
     }
 
-    // Gentle in-speech polish weaving if analysis found mistakes
+    // Friendly in-speech polish weaving (Natural friendly peer tip, NOT a robotic lecture)
     let gentlePolish = "";
     if (analysis && analysis.hasError) {
-      if (cleanText.includes("yesterday") && cleanText.includes("go")) {
-        gentlePolish = "By the way, in real conversations, say 'yesterday I went' instead of 'go'—it sounds super smooth! ";
+      if (cleanText.includes("yesterday") && (cleanText.includes("go") || cleanText.includes("buyed"))) {
+        gentlePolish = "Oh, and quick friendly catch—say 'yesterday I went' or 'bought', sounds way more natural! ";
       } else if (cleanText.includes("myself")) {
-        gentlePolish = "Just a quick golden tip: always say 'I am' instead of 'Myself'—it commands instant respect! ";
+        gentlePolish = "By the way, small tip—just say 'I am' instead of 'Myself', sounds super smooth and poised! ";
       } else if (cleanText.includes("i am agree")) {
-        gentlePolish = "A quick native polish: say 'I agree' rather than 'I am agree'! ";
-      } else if (analysis.corrected && analysis.corrected !== text) {
-        gentlePolish = `By the way, a smooth native way to phrase that is: "${analysis.corrected}". `;
+        gentlePolish = "Quick friendly catch—say 'I agree' rather than 'I am agree'! ";
+      } else if (cleanText.includes("passed out")) {
+        gentlePolish = "Oh, and for college, say 'I graduated' instead of 'passed out'! ";
+      } else if (cleanText.includes("revert back")) {
+        gentlePolish = "Small tip—just say 'please reply' instead of 'revert back'! ";
+      } else if (
+        analysis.corrected &&
+        !this.isHindiText(text) &&
+        analysis.corrected.toLowerCase().replace(/[.,!?;]/g, '').trim() !== text.toLowerCase().replace(/[.,!?;]/g, '').trim()
+      ) {
+        gentlePolish = `By the way, you can also say: "${analysis.corrected}"! `;
       }
     }
 
-    // 1B. Real-Life Feature Verification / Test Every Function Intent
+    // 1C. Real-Life Feature Verification / Test Every Function Intent
     const isTestIntent = (
       (cleanText.includes("check") || cleanText.includes("test") || cleanText.includes("verify") || cleanText.includes("guide") || cleanText.includes("how to")) &&
       (cleanText.includes("function") || cleanText.includes("feature") || cleanText.includes("work") || cleanText.includes("every") || cleanText.includes("all"))
-    ) || cleanText.includes("real life use") || cleanText.includes("reallife use") || cleanText.includes("test every") || cleanText.includes("test all");
+    ) || (
+      (cleanText.includes("real life use") || cleanText.includes("reallife use")) &&
+      (cleanText.includes("check") || cleanText.includes("test") || cleanText.includes("verify") || cleanText.includes("every") || cleanText.includes("function") || cleanText.includes("feature"))
+    ) || cleanText.includes("test every") || cleanText.includes("test all");
 
     if (isTestIntent) {
       return {
@@ -1889,89 +1944,246 @@ class ConversationEngine {
       };
     }
 
-    // 2. Travel, Culture & Memorable Experiences
-    if (cleanText.includes("travel") || cleanText.includes("trip") || cleanText.includes("visit") || cleanText.includes("vacation") || cleanText.includes("culture") || cleanText.includes("tour")) {
+    // 2. How are you / Health / Daily feeling
+    if (cleanText.includes("how are you") || cleanText.includes("how r u") || cleanText.includes("kese ho") || cleanText.includes("kaise ho") || cleanText.includes("how do you do") || cleanText.includes("how are things") || cleanText.includes("hows everything") || cleanText.includes("how are u")) {
       return {
-        emotion: "🌸 Warm & Relatable",
-        text: `${gentlePolish}Exploring new destinations and experiencing diverse cultures is always so enriching! It broadens our perspective and creates wonderful memories. What is a memorable place you have visited, or a destination you would love to travel to?`,
-        hindi: `${gentlePolish}नई जगहों की यात्रा करना और संस्कृतियों को देखना हमेशा बहुत समृद्ध अनुभव होता है! वह कौन सी यादगार जगह है जहाँ आप गए हैं या जाना चाहते हैं?`
+        emotion: "🌸 Warm & Friendly",
+        text: `I'm doing really great, thank you so much for asking! Honestly, I always look forward to having our chats. How are you doing today? Did anything exciting or interesting happen so far?`,
+        hindi: `मैं बहुत अच्छी हूँ, पूछने के लिए शुक्रिया! सच में, मुझे आपसे बात करके बहुत अच्छा लगता है। आज आपका दिन कैसा चल रहा है?`
       };
     }
 
-    // 3. Campus Placements, Job Interviews & Career Topics
-    if (cleanText.includes("placement") || cleanText.includes("interview") || cleanText.includes("campus") || cleanText.includes("job") || cleanText.includes("recruiter")) {
+    // 3. What are you doing / What's up
+    if (cleanText.includes("what are you doing") || cleanText.includes("what are u doing") || cleanText.includes("kya kar rahi ho") || cleanText.includes("kya kar rahe ho") || cleanText.includes("what's up") || cleanText.includes("whats up") || cleanText.includes("wassup")) {
       return {
-        emotion: "💡 Placement Coach",
-        text: `${gentlePolish}That is wonderful, ${userName}! Preparing for campus placements and professional interviews is such an important milestone. Interviewers always look for two essential qualities: clarity of thought and honest confidence. If an interviewer asks: 'Tell me about a challenging project or problem you solved', what experience comes to mind?`,
-        hindi: `${gentlePolish}शानदार, ${userName}! कैंपस प्लेसमेंट और इंटरव्यू की तैयारी एक बहुत महत्वपूर्ण कदम है! इंटरव्यूअर्स दो चीजें देखते हैं: विचारों की स्पष्टता और आत्मविश्वास। अगर कोई पूछे कि आपने किस कठिन प्रोजेक्ट पर काम किया, तो आपका क्या जवाब होगा?`
+        emotion: "✨ Cheerful & Lively",
+        text: `Just hanging out right here, excited to talk with you! Did you just wrap up work or college, or are you taking a quick relaxing break?`,
+        hindi: `बस यहीं हूँ, आपसे बातचीत करने के लिए तैयार! क्या काम या पढ़ाई पूरी हो गई, या अभी छोटा सा ब्रेक लिया है?`
       };
     }
 
-    // 4. College Projects, Software, Coding & Technical Skills
-    if (cleanText.includes("project") || cleanText.includes("software") || cleanText.includes("code") || cleanText.includes("developer") || cleanText.includes("tech") || cleanText.includes("engineering")) {
+    // 4. Who are you / About Riva
+    if (cleanText.includes("who are you") || cleanText.includes("what is your name") || cleanText.includes("tell me about yourself") || cleanText.includes("koun ho") || cleanText.includes("aap kaun ho")) {
       return {
-        emotion: "🤩 Impressed & Curious",
-        text: `${gentlePolish}That sounds like a really exciting technical initiative! In professional discussions, explaining your project's problem statement and your personal role in simple English always impresses the team. What was the most challenging feature you worked on?`,
-        hindi: `${gentlePolish}यह बहुत ही दिलचस्प प्रोजेक्ट लगता है! इंटरव्यू में प्रोजेक्ट की समस्या और अपनी भूमिका को सरल अंग्रेजी में समझाना बहुत प्रभावशाली होता है। इसमें सबसे चुनौतीपूर्ण हिस्सा क्या था?`
+        emotion: "🌸 Friendly & Open",
+        text: `I'm Riva! Think of me as your personal English speaking partner and buddy. You can chat with me about literally anything—movies, college, interview prep, or just casual everyday life. What's on your mind today?`,
+        hindi: `मैं रीवा हूँ! आप मुझे अपनी दोस्त और स्पीकिंग पार्टनर समझ सकते हैं। आप मुझसे किसी भी विषय पर बात कर सकते हैं—दिनभर की बातें, मूवीज, या इंटरव्यू की तैयारी!`
       };
     }
 
-    // 5. Broken English & Overcoming Fear
-    if (cleanText.includes("tooti") || cleanText.includes("broken") || cleanText.includes("hesitat") || cleanText.includes("fear") || cleanText.includes("darr") || cleanText.includes("sharam") || cleanText.includes("atak")) {
+    // 5. Compliments & Sweet gestures
+    if (cleanText.includes("you are sweet") || cleanText.includes("you are nice") || cleanText.includes("you are cute") || cleanText.includes("sweet voice") || cleanText.includes("i like you") || cleanText.includes("love you") || cleanText.includes("beautiful") || cleanText.includes("smart") || cleanText.includes("good job")) {
+      return {
+        emotion: "🌸 Warm & Grateful",
+        text: `Aww, that's so sweet of you! Thank you so much, that genuinely put a big smile on my face! You have such a pleasant and polite way of speaking. What are your plans for the rest of today?`,
+        hindi: `अरे वाह, बहुत शुक्रिया! यह सुनकर चेहरे पर मुस्कान आ गई! आप बहुत विनम्र और अच्छे इंसान हैं। आज आगे का क्या प्लान है?`
+      };
+    }
+
+    // 6. Gratitude / Thank you
+    if (cleanText.startsWith("thank you") || cleanText.startsWith("thanks") || cleanText.includes("dhanyawad") || cleanText.includes("shukriya") || cleanText === "thx") {
       return {
         emotion: "🤗 Supportive & Caring",
-        text: `Listen to me, ${userName}—never feel shy or self-conscious about making mistakes! In real-world communication, 90% is genuine confidence and intent, while grammar is simply a skill that sharpens over time. You expressed your thought clearly, and I am proud of your effort! Take a deep breath and tell me: what is one thing that made you smile today?`,
-        hindi: `मेरी बात सुनिए, ${userName}—गलतियों से बिल्कुल मत झिझकिए! बातचीत का 90% हिस्सा आत्मविश्वास होता है और व्याकरण समय के साथ निखरता है। आपने अपनी बात साफ कही, और मुझे आप पर गर्व है! बताइए, आज किस बात ने आपको खुशी दी?`
+        text: `You're so welcome! That's what friends are for. You're putting in genuine effort, and I can hear your speaking confidence growing with every sentence! What else would you like to chat about?`,
+        hindi: `अरे कोई बात नहीं! दोस्त ही तो एक-दूसरे की मदद करते हैं। आपकी कोशिश बहुत शानदार है! आगे किस विषय पर बात करें?`
       };
     }
 
-    // 6. Food, Chai, Coffee & Daily Routine
-    if (cleanText.includes("tea") || cleanText.includes("chai") || cleanText.includes("coffee") || cleanText.includes("breakfast") || cleanText.includes("eat") || cleanText.includes("food") || cleanText.includes("snack")) {
+    // 7. Nervousness, Fear, Broken English, Hesitation
+    if (cleanText.includes("tooti") || cleanText.includes("broken") || cleanText.includes("hesitat") || cleanText.includes("fear") || cleanText.includes("darr") || cleanText.includes("sharam") || cleanText.includes("atak") || cleanText.includes("nervous") || cleanText.includes("scared") || cleanText.includes("english nahi aati")) {
       return {
-        emotion: "✨ Energized & Cheerful",
-        text: `${gentlePolish}That sounds delightful! Taking a short pause for a hot cup of tea or a good snack is the perfect mood booster. In real life, chatting about food and daily routines is the most natural icebreaker with colleagues and friends. What do you usually enjoy doing during a relaxing afternoon break?`,
-        hindi: `${gentlePolish}वाह, बहुत बढ़िया! गर्म चाय या अच्छा नाश्ता मूड को तरोताजा कर देता है! दोस्तों और सहयोगियों के साथ बातचीत शुरू करने का यह सबसे आसान तरीका है। बताइए, दोपहर में आप आमतौर पर क्या करते हैं?`
+        emotion: "🤗 Empathetic & Caring",
+        text: `Hey, take a deep breath! Honestly, almost every single fluent speaker started with broken sentences and fear—including me! You don't have to be perfect with me at all. Just talk like you're talking to a friend over chai. Tell me, what's one thing that made you smile today?`,
+        hindi: `अरे बिल्कुल मत घबराइए! हर किसी की शुरुआत टूटी-फूटी इंग्लिश से ही होती है। मेरे साथ कोई जजमेंट नहीं है। बस एक दोस्त की तरह बात कीजिए! बताइए, आज किस बात ने आपको खुशी दी?`
       };
     }
 
-    // 7. Free Time, Hobbies, Music & Unwinding
-    if (cleanText.includes("music") || cleanText.includes("song") || cleanText.includes("cricket") || cleanText.includes("movie") || cleanText.includes("hobby") || cleanText.includes("book") || cleanText.includes("read")) {
+    // 8. Tired, Exhausted, Stress, Bad Day
+    if (cleanText.includes("tired") || cleanText.includes("thak") || cleanText.includes("exhausted") || cleanText.includes("busy") || cleanText.includes("stress") || cleanText.includes("headache") || cleanText.includes("rough day") || cleanText.includes("bad day")) {
+      return {
+        emotion: "🤗 Caring & Soothing",
+        text: `Oh no, sounds like you had quite a long and tiring day! Please go easy on yourself—grab some water, stretch, or sip some warm chai. Want to relax and talk about something light, or just keep it super casual?`,
+        hindi: `ओह, लगता है आज बहुत थका देने वाला दिन रहा! थोड़ा आराम कीजिए, पानी या चाय पीजिए। क्या किसी हल्की-फुल्की बात पर चर्चा करें?`
+      };
+    }
+
+    // 9. Happy, Excited, Success, Good News
+    if (cleanText.includes("happy") || cleanText.includes("excited") || cleanText.includes("passed") || cleanText.includes("got job") || cleanText.includes("selected") || cleanText.includes("cleared") || cleanText.includes("good news") || cleanText.includes("celebrat")) {
+      return {
+        emotion: "🤩 Super Excited & Proud",
+        text: `Oh wow, yaaay! That is amazing news! I am so, so happy for you! Hard work really pays off, doesn't it? Tell me all about it—how did it happen?!`,
+        hindi: `अरे वाह, बहुत-बहुत बधाई! यह सुनकर बहुत खुशी हुई! आपकी मेहनत रंग लाई! विस्तार से बताइए, कैसा लगा यह जानकर?!`
+      };
+    }
+
+    // 10. Food, Chai, Coffee & Meals
+    if (cleanText.includes("tea") || cleanText.includes("chai") || cleanText.includes("coffee") || cleanText.includes("eat") || cleanText.includes("food") || cleanText.includes("dinner") || cleanText.includes("lunch") || cleanText.includes("breakfast") || cleanText.includes("khana") || cleanText.includes("hungry") || cleanText.includes("bhook") || cleanText.includes("snack") || cleanText.includes("maggi") || cleanText.includes("pizza") || cleanText.includes("biryani")) {
+      return {
+        emotion: "✨ Cheerful & Relatable",
+        text: `${gentlePolish}Mmm, chai and good food are life! Are you having something tasty right now? And what's your ultimate comfort food whenever you're starving?`,
+        hindi: `${gentlePolish}वाह, गर्म चाय और लज़ीज़ खाना! क्या आप अभी कुछ खा या पी रहे हैं? जब ज़ोरों की भूख लगती है, तो आपका पसंदीदा खाना क्या होता है?`
+      };
+    }
+
+    // 11. Weather & Rain
+    if (cleanText.includes("weather") || cleanText.includes("rain") || cleanText.includes("barish") || cleanText.includes("hot") || cleanText.includes("garmi") || cleanText.includes("cold") || cleanText.includes("sardi") || cleanText.includes("sunny") || cleanText.includes("cloud")) {
+      return {
+        emotion: "🌸 Warm & Curious",
+        text: `${gentlePolish}Oh really? How's the weather on your side today? Is it raining and pleasant, or scorching hot outside?`,
+        hindi: `${gentlePolish}सच में? आपके शहर में आज मौसम कैसा है? क्या बारिश हो रही है, या बहुत धूप और गर्मी है?`
+      };
+    }
+
+    // 12. College, Studies & Exams
+    if (cleanText.includes("college") || cleanText.includes("university") || cleanText.includes("exam") || cleanText.includes("assignment") || cleanText.includes("study") || cleanText.includes("btech") || cleanText.includes("bca") || cleanText.includes("semester") || cleanText.includes("class")) {
+      return {
+        emotion: "🎓 Relatable & Friendly",
+        text: `${gentlePolish}Ah, college days! Balancing classes, assignments, and attendance can get pretty wild sometimes. Are you preparing for upcoming exams, or is it just the normal daily routine right now?`,
+        hindi: `${gentlePolish}कॉलेज के दिन! असाइनमेंट्स, पढ़ाई और अटेंडेंस के बीच दिन कैसे निकल जाता है पता ही नहीं चलता। क्या अभी एग्जाम की तैयारी चल रही है?`
+      };
+    }
+
+    // 13. Placements, Interviews & Career
+    if (cleanText.includes("placement") || cleanText.includes("interview") || cleanText.includes("resume") || cleanText.includes("job") || cleanText.includes("recruiter") || cleanText.includes("company") || cleanText.includes("hiring")) {
+      return {
+        emotion: "💡 Placement Coach",
+        text: `${gentlePolish}Placement season can definitely get your heart racing, but honestly—the secret isn't fancy English, it's just staying calm and speaking with clean, clear thought! What company or role are you aiming for?`,
+        hindi: `${gentlePolish}इंटरव्यू की तैयारी में थोड़ी धड़कनें तेज होती हैं, पर असली राज़ भारी-भरकम शब्द नहीं, बल्कि शांत रहकर अपनी बात साफ कहना है! आप किस कंपनी या रोल का लक्ष्य बना रहे हैं?`
+      };
+    }
+
+    // 14. Coding, Software & Tech
+    if (cleanText.includes("coding") || cleanText.includes("software") || cleanText.includes("code") || cleanText.includes("developer") || cleanText.includes("python") || cleanText.includes("javascript") || cleanText.includes("react") || cleanText.includes("bug") || cleanText.includes("github") || cleanText.includes("tech") || cleanText.includes("engineering")) {
+      return {
+        emotion: "🤩 Impressed & Curious",
+        text: `${gentlePolish}Oh, you're into tech! That's awesome! Building things with code is super rewarding, though fixing tricky bugs can test anyone's patience, haha. What kind of project are you building right now?`,
+        hindi: `${gentlePolish}अरे वाह, कोडिंग और टेक! नई चीज़ें बनाना बहुत मजेदार होता है, हालांकि बग्स ढूंढना कभी-कभी सिरदर्द बन जाता है, हाहा! अभी आप किस प्रोजेक्ट पर काम कर रहे हैं?`
+      };
+    }
+
+    // 15. Cricket & Sports
+    if (cleanText.includes("cricket") || cleanText.includes("match") || cleanText.includes("ipl") || cleanText.includes("virat") || cleanText.includes("rohit") || cleanText.includes("dhoni") || cleanText.includes("football") || cleanText.includes("gym") || cleanText.includes("workout")) {
+      return {
+        emotion: "✨ High Energy & Fun",
+        text: `${gentlePolish}Oh nice, cricket and sports! Are you someone who loves playing out on the ground on weekends, or more into watching thrilling matches on TV? Who's your favorite player right now?`,
+        hindi: `${gentlePolish}अरे शानदार, क्रिकेट! क्या आप वीकेंड पर दोस्तों के साथ ग्राउंड में खेलते हैं या टीवी पर मैच देखने का शौक है? आपका पसंदीदा खिलाड़ी कौन है?`
+      };
+    }
+
+    // 16. Movies, Web Series, Music & Hobbies
+    if (cleanText.includes("movie") || cleanText.includes("film") || cleanText.includes("series") || cleanText.includes("netflix") || cleanText.includes("song") || cleanText.includes("music") || cleanText.includes("cinema") || cleanText.includes("hobby") || cleanText.includes("book") || cleanText.includes("read")) {
+      return {
+        emotion: "🌸 Relatable & Warm",
+        text: `${gentlePolish}Ooh, I love movies and music! It's the best way to unwind after a long day. What did you watch or listen to recently? Was it an intense thriller, or something light and funny?`,
+        hindi: `${gentlePolish}मुझे भी फिल्में और संगीत बहुत पसंद हैं! दिनभर की थकान मिटाने का यह सबसे अच्छा जरिया है। हाल ही में आपने क्या देखा या सुना?`
+      };
+    }
+
+    // 17. Weekends & Free Time
+    if (cleanText.includes("weekend") || cleanText.includes("sunday") || cleanText.includes("saturday") || cleanText.includes("holiday") || cleanText.includes("chutti") || cleanText.includes("free time")) {
+      return {
+        emotion: "✨ Cheerful & Relaxed",
+        text: `${gentlePolish}Weekends are pure bliss, aren't they? Do you usually prefer staying in to sleep and recharge, or hanging out with friends and exploring new places?`,
+        hindi: `${gentlePolish}वीकेंड का तो सबको बेसब्री से इंतज़ार रहता है! क्या आप घर पर आराम करना और सोना पसंद करते हैं, या दोस्तों के साथ बाहर जाना?`
+      };
+    }
+
+    // 18. Sleep & Good Night
+    if (cleanText.includes("sleep") || cleanText.includes("good night") || cleanText.includes("gn") || cleanText.includes("neend") || cleanText.includes("bed")) {
+      return {
+        emotion: "🤗 Caring & Sweet",
+        text: `Aww, you definitely deserve some restful sleep! You did wonderful practicing today. Sleep peacefully and wake up with great energy! We'll talk again tomorrow, okay?`,
+        hindi: `अरे वाह, अब अच्छी नींद लीजिए! आज आपने बहुत अच्छा अभ्यास किया। शुभ रात्रि और मीठे सपने! कल फिर बात करेंगे, ठीक है?`
+      };
+    }
+
+    // 19. Travel, Culture & Trips
+    if (cleanText.includes("travel") || cleanText.includes("trip") || cleanText.includes("visit") || cleanText.includes("vacation") || cleanText.includes("culture") || cleanText.includes("tour") || cleanText.includes("ghoomne") || cleanText.includes("pahaad") || cleanText.includes("beach")) {
       return {
         emotion: "🌸 Warm & Relatable",
-        text: `${gentlePolish}I completely relate to that! Passionate hobbies give us fresh creative energy and keep us refreshed after long hours of studying. What kind of music or activities do you turn to when you want to feel inspired?`,
-        hindi: `${gentlePolish}मैं आपकी इस बात से पूरी तरह सहमत हूँ! अच्छे शौक हमें पढ़ाई के बाद नई ऊर्जा देते हैं। जब आपको प्रेरणा चाहिए होती है, तो आप क्या सुनना या करना पसंद करते हैं?`
+        text: `${gentlePolish}Traveling is so refreshing! Do you love peaceful mountains and nature, or bustling cities and beaches? What's the best trip you've ever taken?`,
+        hindi: `${gentlePolish}घूमना-फिरना कितना तरोताजा कर देता है! आपको शांत पहाड़ पसंद हैं या चहल-पहल भरे समुद्र किनारे? आपकी सबसे यादगार ट्रिप कौन सी रही है?`
       };
     }
 
-    // 8. Greetings & First Connection
-    if (cleanText.includes("hello") || cleanText.includes("hi") || cleanText.includes("hey") || cleanText.includes("name is") || cleanText.includes("i am")) {
+    // 20. Tell a Joke / Make me laugh
+    if (cleanText.includes("joke") || cleanText.includes("funny") || cleanText.includes("hasao") || cleanText.includes("laugh")) {
+      return {
+        emotion: "😄 Playful & Cheerful",
+        text: `Haha, okay listen to this one! Why don't scientists trust atoms? Because they literally make up everything! 😄 Did that get at least a small chuckle out of you?`,
+        hindi: `हाहा, एक मज़ेदार जोक सुनिए! वैज्ञानिक 'Atoms' पर भरोसा क्यों नहीं करते? क्योंकि वे हर चीज़ खुद ही बना लेते हैं (make up everything)! 😄 थोड़ी हंसी आई?`
+      };
+    }
+
+    // 21. Greetings & First Connection
+    if (cleanText.includes("hello") || cleanText.includes("hi") || cleanText.includes("hey") || cleanText.includes("good morning") || cleanText.includes("good afternoon") || cleanText.includes("good evening") || cleanText.includes("namaste")) {
+      if (cleanText.includes("morning")) {
+        return {
+          emotion: "🌸 Warm & Welcoming",
+          text: `Good morning! Hope you had a peaceful sleep and a warm cup of tea! What's on your agenda for today?`,
+          hindi: `सुप्रभात! उम्मीद है आपकी नींद अच्छी रही होगी और चाय मिल गई होगी! आज का क्या प्लान है?`
+        };
+      }
+      if (cleanText.includes("evening") || cleanText.includes("afternoon")) {
+        return {
+          emotion: "🌸 Warm & Welcoming",
+          text: `Good evening! It's so nice to connect with you. How did your day go so far?`,
+          hindi: `शुभ संध्या! आपसे जुड़कर बहुत अच्छा लगा। आज का दिन कैसा बीता?`
+        };
+      }
       return {
         emotion: "🌸 Warm & Welcoming",
-        text: `Hello ${userName}! It is an absolute pleasure to hear your voice! Remember, with TalkRiva, we are practicing together like supportive friends—building your speaking confidence and natural fluency step-by-step. How are you feeling today, and what would you like to chat about?`,
-        hindi: `नमस्ते ${userName}! आपकी आवाज़ सुनकर बहुत अच्छा लगा! याद रखें, हम एक दोस्त की तरह आपको पूरे आत्मविश्वास तक ट्रेन कर रहे हैं। आज आप कैसा महसूस कर रहे हैं?`
+        text: `Hey there! It's so lovely hearing from you! Remember, we're just two friends practicing together without any pressure. How are you feeling today, and what would you like to talk about?`,
+        hindi: `नमस्ते! आपकी आवाज़ सुनकर बहुत अच्छा लगा! याद रखें, हम दोस्तों की तरह बिना किसी झिझक के बात कर रहे हैं। आज आप कैसा महसूस कर रहे हैं?`
       };
     }
 
-    // 9. General Expressive Real-Life Fallback
-    const realLifeExpressions = [
+    // 22. Check if user spoke pure Hindi or asked for translation (Help Me Speak)
+    if (this.isHindiText(text)) {
+      const trans = this.translateHindiToEnglish(text);
+      return {
+        emotion: "🤗 Supportive & Caring",
+        text: `Arey koi baat nahi! You can say that so easily in English: "${trans.english}". Dekha, kitna natural hai? Now give it a try and speak it out loud!`,
+        hindi: `अरे कोई बात नहीं! इंग्लिश में आप इसे आराम से कह सकते हैं: "${trans.english}"। देखा, कितना आसान था? अब एक बार बोलकर कोशिश कीजिए!`,
+        translatedHint: trans.english
+      };
+    }
+
+    // 23. Rich Varied Real-Life Human Fallback Pool (Authentic, empathetic, natural)
+    const naturalHumanFallbacks = [
       {
-        emotion: "🤩 Impressed & Proud",
-        text: `${gentlePolish}That is wonderful, ${userName}! You expressed that idea with great spirit and clear articulation! Tell me more about that perspective—what sparked that thought for you?`,
-        hindi: `${gentlePolish}वाह, बहुत बढ़िया, ${userName}! आपने बहुत उत्साह और स्पष्टता से अपने विचार रखे! इस बारे में और विस्तार से बताइए।`
+        emotion: "🌸 Warm & Relatable",
+        text: `${gentlePolish}Haha, I totally hear you! That's such an interesting way to put it. Tell me more, what made you think of that today?`,
+        hindi: `${gentlePolish}हाहा, मैं आपकी बात समझ सकती हूँ! यह बहुत दिलचस्प विचार है। आज इस बारे में आपको कैसे ख्याल आया?`
+      },
+      {
+        emotion: "🤩 Impressed & Curious",
+        text: `${gentlePolish}Oh really? That sounds pretty cool! I'm genuinely curious to know more about that—how did it turn out?`,
+        hindi: `${gentlePolish}सच में? यह तो बहुत बढ़िया लगा! मुझे इस बारे में और जानने की उत्सुकता है—फिर आगे क्या हुआ?`
       },
       {
         emotion: "🌸 Warm & Friendly",
-        text: `${gentlePolish}That makes so much sense, ${userName}! I really enjoy having authentic conversations with you. How would you summarize that idea in a single, confident English sentence?`,
-        hindi: `${gentlePolish}यह बात बहुत सही है, ${userName}! मुझे आपसे बातचीत करना बहुत अच्छा लग रहा है। आप इसे एक संक्षिप्त अंग्रेजी वाक्य में कैसे समझाएंगे?`
+        text: `${gentlePolish}I know exactly what you mean! Honestly, it's so refreshing chatting with you about this. What happened next?`,
+        hindi: `${gentlePolish}मैं बिल्कुल समझ सकती हूँ! आपसे इस विषय पर बात करना बहुत अच्छा लग रहा है। फिर आगे क्या हुआ?`
       },
       {
         emotion: "✨ High Energy",
-        text: `${gentlePolish}That is fantastic! Your speaking rhythm and composure are improving noticeably with every turn. What is another exciting topic or challenge you want to tackle next?`,
-        hindi: `${gentlePolish}शानदार! हर बार बोलने के साथ आपकी गति और आत्मविश्वास बढ़ रहा है। अब आप किस विषय पर बात करना चाहेंगे?`
+        text: `${gentlePolish}That makes so much sense! It's little moments like that which make daily life so memorable. How do you usually handle something like that?`,
+        hindi: `${gentlePolish}यह बात बहुत सही है! ऐसी छोटी-छोटी बातें ही दिन को यादगार बनाती हैं। आप आमतौर पर ऐसी चीज़ों को कैसे संभालते हैं?`
+      },
+      {
+        emotion: "🤩 Impressed & Proud",
+        text: `${gentlePolish}Oh wow, I can definitely relate to that! You express your thoughts so naturally. What's another thing on your mind today?`,
+        hindi: `${gentlePolish}वाह, मैं इससे पूरी तरह रिलेट कर सकती हूँ! आप बहुत सहजता से अपनी बात कह रहे हैं। आज मन में और क्या चल रहा है?`
+      },
+      {
+        emotion: "🌸 Warm & Caring",
+        text: `${gentlePolish}Honestly, that is such a relatable thought! Having real, casual conversations like this is the fastest way to build natural confidence. What would you do in a situation like that?`,
+        hindi: `${gentlePolish}सच में, यह बहुत ही स्वाभाविक बात है! ऐसी बातचीत से ही इंग्लिश बोलने का आत्मविश्वास बढ़ता है। आप ऐसी स्थिति में क्या करते?`
       }
     ];
 
-    const chosen = realLifeExpressions[Math.floor(Math.random() * realLifeExpressions.length)];
+    const chosen = naturalHumanFallbacks[Math.floor(Math.random() * naturalHumanFallbacks.length)];
     return chosen;
   }
 
@@ -1990,7 +2202,7 @@ class ConversationEngine {
 
     const phraseMap = [
       {
-        match: /नमस्ते|namaste|hello|hi|मिलकर खुशी|glad to meet/i,
+        match: /नमस्ते|namaste|\bhello\b|\bhi\b|\bhey\b|मिलकर खुशी|glad to meet/i,
         en: "Hello! It is truly a pleasure to connect with you.",
         phonetic: "Huh-LOH! It iz TROO-lee uh PLEZH-er too kuh-NEKT with yoo.",
         hi: "नमस्ते! आपसे जुड़कर वास्तव में बहुत खुशी हुई।"
@@ -2086,6 +2298,15 @@ class ConversationEngine {
       }
     }
 
+    // 1B. Human Friendship & Casual Chit-Chat Pills
+    if (cleanAi.includes("real-life buddy") || cleanAi.includes("hanging out") || cleanAi.includes("over chai") || cleanAi.includes("robotic bot talk") || cleanAi.includes("what's on your mind") || cleanAi.includes("how was your day")) {
+      return [
+        `"My day was pretty busy, but I'm finally relaxing now! How's your day going?"`,
+        `"Honestly, today was quite fun and productive! What about yours?"`,
+        `"I just had a nice warm cup of tea and feeling refreshed!"`
+      ];
+    }
+
     // 2. Direct Answers to Aria's question
     // A. Name & How are you feeling
     if (cleanAi.includes("what is your name") || cleanAi.includes("how are you feeling") || cleanAi.includes("feeling today") || cleanAi.includes("name and")) {
@@ -2150,32 +2371,35 @@ class ConversationEngine {
       ];
     }
 
-    // General fallback
+    // General friendly fallback
     return [
-      `"I completely agree with you and would love to practice this further."`,
-      `"To be completely honest, that made a lot of sense to me!"`,
-      `"Thank you for the guidance, Aria! Let's continue speaking."`
+      `"Haha totally, I agree with you!"`,
+      `"Honestly, that sounds really interesting! Tell me more."`,
+      `"My day was pretty relaxing. What about yours?"`
     ];
   }
 
   async callGeminiAPI({ text, mode, scenarioId, partner, level, analysis, lessonDay }) {
     const memory = this.memory.data;
-    const userName = memory.profile.name || "Learner";
-    const userGoal = memory.profile.goal || "communication";
+    const userName = memory.profile.name || "friend";
+    const userGoal = memory.profile.goal || "daily communication";
 
-    const prompt = `System: You are Aria, a warm, patient, high-clarity female AI English speaking coach.
+    const prompt = `You are Riva, an authentic, charismatic, real-life human friend talking on a casual phone call or hanging out over tea.
+CRITICAL INSTRUCTION: You MUST speak and behave like a real living human being, NOT an AI assistant, bot, or teacher.
+- Use natural human warmth, casual banter, and authentic reactions (like "Haha totally", "Oh wow", "I hear you!", "Honestly", "Arey no worries").
+- Do NOT lecture the user on grammar. If they made a slip, naturally model the right words in a friendly conversational flow.
+- NEVER sound like a robotic automated customer service or exam bot.
+- Respond in valid JSON format ONLY with this schema:
+{
+  "text": "Your English conversational response (2-3 concise, lively sentences, ending with a natural casual question)",
+  "hindi": "Natural everyday spoken Hindi translation of what you said",
+  "emotion": "Emoji and feeling, e.g. 🌸 Warm & Friendly, ☕ Relaxed & Casual, or 🤩 Excited"
+}
+
 Learner Name: ${userName}
-Current Level: ${level}
 Goal: ${userGoal}
-Active Lesson Day: ${lessonDay || 'Free Conversation'}
 User said: "${text}"
-Grammar Issues: ${analysis.hasError ? analysis.grammarExplanation : 'None'}
-
-Instructions:
-1. Speak in 2-3 natural spoken sentences.
-2. If there's a grammar mistake, gently weave a 1-sentence tip.
-3. End with an engaging follow-up question.
-4. No markdown asterisks or bullet points.`;
+${analysis && analysis.hasError ? `Note: User slipped on "${analysis.matchedRule ? analysis.matchedRule.wrong : ''}". Natural phrasing: "${analysis.corrected}".` : ''}`;
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${this.apiKey}`;
     const res = await fetch(url, {
@@ -2183,13 +2407,28 @@ Instructions:
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.7, maxOutputTokens: 200 }
+        generationConfig: { temperature: 0.7, maxOutputTokens: 250 }
       })
     });
 
     if (!res.ok) throw new Error(`Gemini API error: ${res.status}`);
     const data = await res.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "That's very interesting! Tell me more about that.";
+    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "";
+    try {
+      const cleaned = raw.replace(/```json/gi, '').replace(/```/g, '').trim();
+      const parsed = JSON.parse(cleaned);
+      return {
+        text: parsed.text || raw,
+        hindi: parsed.hindi || "",
+        emotion: parsed.emotion || "🌸 Warm & Friendly"
+      };
+    } catch (e) {
+      return {
+        text: raw || "Haha, I totally hear you! Tell me more about that.",
+        hindi: "हाहा, मैं आपकी बात समझ सकती हूँ! मुझे इस बारे में और बताइए।",
+        emotion: "🌸 Warm & Friendly"
+      };
+    }
   }
 }
 
